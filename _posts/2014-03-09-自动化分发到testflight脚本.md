@@ -1,3 +1,10 @@
+---
+layout: post
+category : other
+tags : [testflight, ios, blog, developer,shell，xcode]
+---
+{% include JB/setup %}
+
 最近公司项目有一些分发的需求，所以我搜索了一些资料，实现了自动打包并且上传到testflight的脚本。
 
 大概需求有这些
