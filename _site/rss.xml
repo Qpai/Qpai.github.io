@@ -5,10 +5,338 @@
         <description>清凉派的博客 - Qpai</description>
         <link>http://Qpai.github.io</link>
         <link>http://Qpai.github.io</link>
-        <lastBuildDate>2014-03-09T20:01:43+08:00</lastBuildDate>
-        <pubDate>2014-03-09T20:01:43+08:00</pubDate>
+        <lastBuildDate>2014-05-11T22:20:55+08:00</lastBuildDate>
+        <pubDate>2014-05-11T22:20:55+08:00</pubDate>
         <ttl>1800</ttl>
 
+
+        <item>
+                <title>合法使用cocoapods</title>
+                <description>&lt;h2 id=&quot;cocoapods&quot;&gt;合法使用CocoaPods&lt;/h2&gt;
+
+&lt;p&gt;&lt;a href=&quot;http://blog.bignerdranch.com/4638-using-cocoapods-without-going-court/&quot;&gt;原文地址&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;http://cocoapods.org/&quot;&gt;CocoaPods&lt;/a&gt;把基于不同授权协议下的不同作者的源码引入到了你的项目中，这个过程简单的都有点过份。但是当心：感谢CocoaPods，你也以比过去快两倍的速度被卷入了版权麻烦中。&lt;/p&gt;
+
+&lt;p&gt;你想想，每个CocoaPod都基于软件授权协议下被分发，这个软件授权协议对你是有要求的。遵守它，你才能使用这个软件。但是如果你不想遵守授权协议的要求内容，你就失去了使用这个软件的权利。然后你必须删除这个pod并且做一些其他的事情。否则，你将会面临：&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;应用被驳回。&lt;/li&gt;
+
+&lt;li&gt;上法庭。&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h2 id=&quot;&quot;&gt;我不是一个法律从业人员，你知道吗？&lt;/h2&gt;
+
+&lt;p&gt;在我们开始之前，有些事情必须说清楚：这篇文章不是法律建议，如果你目前遇到了和授权相关的问题，那么请你去找法律顾问。如果你没有理由的担心，并且已经影响了你的生活质量，那么看一下心理医生吧还是。&lt;/p&gt;
+
+&lt;h2 id=&quot;cocoa&quot;&gt;不只是COCOA的问题&lt;/h2&gt;
+
+&lt;p&gt;就算你不是一个Cocoa开发，这也会对你有用，只需要把CocoaPods换成gems/modules/packages/或者其他什么，和我们一起讨论。这也是我们这些在Cocoa平台上正在以光的速度违反软件授权协议的人乐于看到的。&lt;/p&gt;
+
+&lt;p&gt;在你的世界里可能流行不同的软件授权协议。检出&lt;a href=&quot;https://tldrlegal.com/&quot;&gt;tl;drLegal&lt;/a&gt;为一个gist，然后就像吃一顿美味的意大利面条一样好好研究一下授权协议文本。很多授权协议的作者也会解答一些问题，这能帮助你理解和运用软件授权协议。&lt;/p&gt;
+
+&lt;h2 id=&quot;_2&quot;&gt;没协议不使用&lt;/h2&gt;
+
+&lt;p&gt;如果没有软件授权协议，默认的软件授权协议如下：作者独家使用，你不能使用。&lt;/p&gt;
+
+&lt;p&gt;苹果帮我们做了些事情，在一个新文件的样板文件中包含了一个独家权利声明。很多项目没有去修改每个独立源文件的声明文本，这使人不安。如果有疑问，就检查一下README，LICENSE 或者COPYING文件，去看看是否有一些其他的软件授权协议。如果你没有找到，从你的app中删除这段有害的代码。&lt;/p&gt;
+
+&lt;p&gt;当你复制一个组件的代码，你必须确保维护了它的软件授权协议。CocoaPods 维护了，但是如果你手动添加第三方的组件，你就得小心。&lt;/p&gt;
+
+&lt;h3 id=&quot;academic__&quot;&gt;ACADEMIC软件授权协议：注意 &amp;amp; 条款&lt;/h3&gt;
+
+&lt;p&gt;一个软件授权协议最通常的要求是包括版权注意和软件授权协议条款。MTI软件协议就像下面这样:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;你应该遵守每个pod设定的最小范围的条款，CocoaPods就是这么做的，它将所有pod的条款复制整合成一个大的授权协议文件，然后帮助你满足这些条款。该文件有两种形式：&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;在你的app中以Markdown的文件存在。&lt;/li&gt;
+
+&lt;li&gt;以Plist的形式被包含在设置中。&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;显示这些信息是为了让用户更容易看到他正在用的组件，它也给组件的作者以宣传。就是说，仅仅包含在你的app包中的注意和条款可能不够，你的app的每个副本都会包含他们。&lt;/p&gt;
+
+&lt;p&gt;很多所谓的学术许可证其实什么要求也没有。一般学术许可证包括这些：&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;&lt;a href=&quot;http://opensource.org/licenses/MIT&quot;&gt;麻省理工许可证（MIT,又称X 11）&lt;/a&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;a href=&quot;http://opensource.org/licenses/BSD-3-Clause&quot;&gt;新版3条款的BSD license (Berkeley Software Distribution 伯克利软件套件 开源协议)&lt;/a&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;a href=&quot;http://opensource.org/licenses/BSD-2-Clause&quot;&gt;简版2条款的BSD licenes&lt;/a&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;a href=&quot;http://opensource.org/licenses/ISC&quot;&gt;最简1条款的BSD licenes&lt;/a&gt;&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h3 id=&quot;apache_20&quot;&gt;APACHE 2.0&lt;/h3&gt;
+
+&lt;p&gt;在冗长的注意和条款上面，Apache 许可证加上了：“你必须在你修改的文件显著位置标明：你修改了文件”&lt;/p&gt;
+
+&lt;p&gt;源码控制让你更容易发现你修改了开源协议文件，如果你修改了，插入一个评论的权利在Apache许可声明下面，像下面这样写上：“MODIFIED (年份) BY (修改人名字). Modifications licensed under (LICENSE).”给一个注意，问题就解决了。&lt;/p&gt;
+
+&lt;p&gt;还有一件事情需要注意：如果这库包含了注意文本文件，那么你需要把它包含到通用注意和条款所在的文件夹中。如果没有注意文件，你就可以忽律法律问题，算你走运。&lt;/p&gt;
+
+&lt;h3 id=&quot;lgpl&quot;&gt;LGPL&lt;/h3&gt;
+
+&lt;p&gt;LGPL 是GNU库（2.0版本）或者Lesser General Public License（2.1版本及以后版本）。很少有iOS软件支持LGPL。&lt;/p&gt;
+
+&lt;p&gt;我们唯一的选项是静态引入到其他代码，所以基于LGPL的组件必须为使用者开源。使用者也可以修改，并且发布他们自己的版本，但是也必须开源。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;I recommend you steer clear of using any LGPL-licensed software in a close-sourced app.&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;我建议你的闭源应用完全不要包括任何使用LGPL条款的软件。&lt;/p&gt;
+
+&lt;h3 id=&quot;gpl&quot;&gt;GPL&lt;/h3&gt;
+
+&lt;p&gt;The GPL is the GNU General Public License. GPL就是GNU General Public License。如果你的应用中包含任何限制在GPL条款下的代码，都不能被发布到appstore中。GPL禁止增加任何条款或者条件在GPL的条款之上。APPStore增加了额外的条款在GLP之上，所以非GPL的代码才能出现在Appstore中。&lt;/p&gt;
+
+&lt;p&gt;如果你不是要发布到appstore中，那么你可以拉取GPL库，记住，你的代码也要获得GPL的许可。&lt;/p&gt;
+
+&lt;h3 id=&quot;_3&quot;&gt;条款会混合使用吗？&lt;/h3&gt;
+
+&lt;p&gt;有些软件授权协议是和其他授权协议不兼容的。有时意味着你不能在你的应用中同时使用这些不同协议的代码。不过，当今大多数情况下，这不是个问题。除了GPL，你基本不需要担心这个问题。&lt;/p&gt;
+
+&lt;p&gt;你必须去读你使用的代码的授权协议，并且确保你真的看懂了。你认真读几次，你基本就能将不同协议之间的作用弄清楚。&lt;/p&gt;
+
+&lt;h3 id=&quot;_4&quot;&gt;总结&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;如果你不遵守软件授权协议，那么你就是亵渎法律&lt;/li&gt;
+
+&lt;li&gt;使用MIT或者BSD条款下的代码，只需要将授权协议和版权文件，放到你的应用包里。&lt;/li&gt;
+
+&lt;li&gt;用Apache 2.0协议的代码是免费的，增加授权协议文件和版权文件在你的应用包中，放到MIT或者BSD同样的位置。必须复制完整的授权协议文本。&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;ol&gt;
+&lt;li&gt;如果你改变了任何的Apache文件，那么你必须为你的改变增加一个突出显示的NOTICE。&lt;/li&gt;
+
+&lt;li&gt;如果已经有了NOTICE文件，那么就复制到你的应用包中，放到一个用户可以看到的地方，设置模块是比较理想的地方。&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;ul&gt;
+&lt;li&gt;不用考虑GPL或者LGPL的代码，除非你想为它头疼或者被AppStore驳回。&lt;/li&gt;
+&lt;/ul&gt;</description>
+                <link>http://Qpai.github.io/2014/05/11/%E5%90%88%E6%B3%95%E4%BD%BF%E7%94%A8cocoapods</link>
+                <guid>http://Qpai.github.io/2014/05/11/合法使用cocoapods</guid>
+                <pubDate>2014-05-11T00:00:00+08:00</pubDate>
+        </item>
+
+        <item>
+                <title>合法使用cocoapods</title>
+                <description>&lt;!doctype html&gt;
+&lt;html&gt;
+&lt;head&gt;
+&lt;meta charset=&quot;utf-8&quot;&gt;
+&lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0, user-scalable=yes&quot;&gt;
+&lt;style&gt;
+*{margin:0;padding:0;}
+body {
+	font:13.34px helvetica,arial,freesans,clean,sans-serif;
+	color:black;
+	line-height:1.4em;
+	background-color: #F8F8F8;
+	padding: 0.7em;
+}
+p {
+	margin:1em 0;
+	line-height:1.5em;
+}
+table {
+	font-size:inherit;
+	font:100%;
+	margin:1em;
+}
+table th{border-bottom:1px solid #bbb;padding:.2em 1em;}
+table td{border-bottom:1px solid #ddd;padding:.2em 1em;}
+input[type=text],input[type=password],input[type=image],textarea{font:99% helvetica,arial,freesans,sans-serif;}
+select,option{padding:0 .25em;}
+optgroup{margin-top:.5em;}
+pre,code{font:12px Monaco,&quot;Courier New&quot;,&quot;DejaVu Sans Mono&quot;,&quot;Bitstream Vera Sans Mono&quot;,monospace;}
+pre {
+	margin:1em 0;
+	font-size:12px;
+	background-color:#eee;
+	border:1px solid #ddd;
+	padding:5px;
+	line-height:1.5em;
+	color:#444;
+	overflow:auto;
+	-webkit-box-shadow:rgba(0,0,0,0.07) 0 1px 2px inset;
+	-webkit-border-radius:3px;
+	-moz-border-radius:3px;border-radius:3px;
+}
+pre code {
+	padding:0;
+	font-size:12px;
+	background-color:#eee;
+	border:none;
+}
+code {
+	font-size:12px;
+	background-color:#f8f8ff;
+	color:#444;
+	padding:0 .2em;
+	border:1px solid #dedede;
+}
+img{border:0;max-width:100%;}
+abbr{border-bottom:none;}
+a{color:#4183c4;text-decoration:none;}
+a:hover{text-decoration:underline;}
+a code,a:link code,a:visited code{color:#4183c4;}
+h2,h3{margin:1em 0;}
+h1,h2,h3,h4,h5,h6{border:0;}
+h1{font-size:170%;border-top:4px solid #aaa;padding-top:.5em;margin-top:1.5em;}
+h1:first-child{margin-top:0;padding-top:.25em;border-top:none;}
+h2{font-size:150%;margin-top:1.5em;border-top:4px solid #e0e0e0;padding-top:.5em;}
+h3{margin-top:1em;}
+hr{border:1px solid #ddd;}
+ul{margin:1em 0 1em 2em;}
+ol{margin:1em 0 1em 2em;}
+ul li,ol li{margin-top:.5em;margin-bottom:.5em;}
+ul ul,ul ol,ol ol,ol ul{margin-top:0;margin-bottom:0;}
+blockquote{margin:1em 0;border-left:5px solid #ddd;padding-left:.6em;color:#555;}
+dt{font-weight:bold;margin-left:1em;}
+dd{margin-left:2em;margin-bottom:1em;}
+sup {
+    font-size: 0.83em;
+    vertical-align: super;
+    line-height: 0;
+}
+* {
+	-webkit-print-color-adjust: exact;
+}
+@media screen and (min-width: 914px) {
+    body {
+        width: 854px;
+        margin:0 auto;
+    }
+}
+@media print {
+	table, pre {
+		page-break-inside: avoid;
+	}
+	pre {
+		word-wrap: break-word;
+	}
+}
+&lt;/style&gt;
+&lt;title&gt;合法使用CocoaPods&lt;/title&gt;
+
+&lt;/head&gt;
+&lt;body&gt;
+&lt;h2&gt;合法使用CocoaPods&lt;/h2&gt;
+
+&lt;p&gt;&lt;a href=&quot;http://blog.bignerdranch.com/4638-using-cocoapods-without-going-court/&quot;&gt;原文地址&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;http://cocoapods.org/&quot;&gt;CocoaPods&lt;/a&gt;把基于不同授权协议下的不同作者的源码引入到了你的项目中，这个过程简单的都有点过份。但是当心：感谢CocoaPods，你也以比过去快两倍的速度被卷入了版权麻烦中。&lt;/p&gt;
+
+&lt;p&gt;你想想，每个CocoaPod都基于软件授权协议下被分发，这个软件授权协议对你是有要求的。遵守它，你才能使用这个软件。但是如果你不想遵守授权协议的要求内容，你就失去了使用这个软件的权利。然后你必须删除这个pod并且做一些其他的事情。否则，你将会面临：&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;应用被驳回。&lt;/li&gt;
+&lt;li&gt;上法庭。&lt;/li&gt;
+&lt;/ol&gt;
+
+
+&lt;h2&gt;我不是一个法律从业人员，你知道吗？&lt;/h2&gt;
+
+&lt;p&gt;在我们开始之前，有些事情必须说清楚：这篇文章不是法律建议，如果你目前遇到了和授权相关的问题，那么请你去找法律顾问。如果你没有理由的担心，并且已经影响了你的生活质量，那么看一下心理医生吧还是。&lt;/p&gt;
+
+&lt;h2&gt;不只是COCOA的问题&lt;/h2&gt;
+
+&lt;p&gt;就算你不是一个Cocoa开发，这也会对你有用，只需要把CocoaPods换成gems/modules/packages/或者其他什么，和我们一起讨论。这也是我们这些在Cocoa平台上正在以光的速度违反软件授权协议的人乐于看到的。&lt;/p&gt;
+
+&lt;p&gt;在你的世界里可能流行不同的软件授权协议。检出&lt;a href=&quot;https://tldrlegal.com/&quot;&gt;tl;drLegal&lt;/a&gt;为一个gist，然后就像吃一顿美味的意大利面条一样好好研究一下授权协议文本。很多授权协议的作者也会解答一些问题，这能帮助你理解和运用软件授权协议。&lt;/p&gt;
+
+&lt;h2&gt;没协议不使用&lt;/h2&gt;
+
+&lt;p&gt;如果没有软件授权协议，默认的软件授权协议如下：作者独家使用，你不能使用。&lt;/p&gt;
+
+&lt;p&gt;苹果帮我们做了些事情，在一个新文件的样板文件中包含了一个独家权利声明。很多项目没有去修改每个独立源文件的声明文本，这使人不安。如果有疑问，就检查一下README，LICENSE 或者COPYING文件，去看看是否有一些其他的软件授权协议。如果你没有找到，从你的app中删除这段有害的代码。&lt;/p&gt;
+
+&lt;p&gt;当你复制一个组件的代码，你必须确保维护了它的软件授权协议。CocoaPods 维护了，但是如果你手动添加第三方的组件，你就得小心。&lt;/p&gt;
+
+&lt;h3&gt;ACADEMIC软件授权协议：注意 &amp;amp; 条款&lt;/h3&gt;
+
+&lt;p&gt;一个软件授权协议最通常的要求是包括版权注意和软件授权协议条款。MTI软件协议就像下面这样:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;你应该遵守每个pod设定的最小范围的条款，CocoaPods就是这么做的，它将所有pod的条款复制整合成一个大的授权协议文件，然后帮助你满足这些条款。该文件有两种形式：&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;在你的app中以Markdown的文件存在。&lt;/li&gt;
+&lt;li&gt;以Plist的形式被包含在设置中。&lt;/li&gt;
+&lt;/ol&gt;
+
+
+&lt;p&gt;显示这些信息是为了让用户更容易看到他正在用的组件，它也给组件的作者以宣传。就是说，仅仅包含在你的app包中的注意和条款可能不够，你的app的每个副本都会包含他们。&lt;/p&gt;
+
+&lt;p&gt;很多所谓的学术许可证其实什么要求也没有。一般学术许可证包括这些：&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;&lt;a href=&quot;http://opensource.org/licenses/MIT&quot;&gt;麻省理工许可证（MIT,又称X 11）&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;http://opensource.org/licenses/BSD-3-Clause&quot;&gt;新版3条款的BSD license (Berkeley Software Distribution 伯克利软件套件 开源协议)&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;http://opensource.org/licenses/BSD-2-Clause&quot;&gt;简版2条款的BSD licenes&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;http://opensource.org/licenses/ISC&quot;&gt;最简1条款的BSD licenes&lt;/a&gt;&lt;/li&gt;
+&lt;/ol&gt;
+
+
+&lt;h3&gt;APACHE 2.0&lt;/h3&gt;
+
+&lt;p&gt;在冗长的注意和条款上面，Apache 许可证加上了：“你必须在你修改的文件显著位置标明：你修改了文件”&lt;/p&gt;
+
+&lt;p&gt;源码控制让你更容易发现你修改了开源协议文件，如果你修改了，插入一个评论的权利在Apache许可声明下面，像下面这样写上：“MODIFIED (年份) BY (修改人名字). Modifications licensed under (LICENSE).”给一个注意，问题就解决了。&lt;/p&gt;
+
+&lt;p&gt;还有一件事情需要注意：如果这库包含了注意文本文件，那么你需要把它包含到通用注意和条款所在的文件夹中。如果没有注意文件，你就可以忽律法律问题，算你走运。&lt;/p&gt;
+
+&lt;h3&gt;LGPL&lt;/h3&gt;
+
+&lt;p&gt;LGPL 是GNU库（2.0版本）或者Lesser General Public License（2.1版本及以后版本）。很少有iOS软件支持LGPL。&lt;/p&gt;
+
+&lt;p&gt;我们唯一的选项是静态引入到其他代码，所以基于LGPL的组件必须为使用者开源。使用者也可以修改，并且发布他们自己的版本，但是也必须开源。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;I recommend you steer clear of using any LGPL-licensed software in a close-sourced app.
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;我建议你的闭源应用完全不要包括任何使用LGPL条款的软件。&lt;/p&gt;
+
+&lt;h3&gt;GPL&lt;/h3&gt;
+
+&lt;p&gt;The GPL is the GNU General Public License.
+GPL就是GNU General Public License。如果你的应用中包含任何限制在GPL条款下的代码，都不能被发布到appstore中。GPL禁止增加任何条款或者条件在GPL的条款之上。APPStore增加了额外的条款在GLP之上，所以非GPL的代码才能出现在Appstore中。&lt;/p&gt;
+
+&lt;p&gt;如果你不是要发布到appstore中，那么你可以拉取GPL库，记住，你的代码也要获得GPL的许可。&lt;/p&gt;
+
+&lt;h3&gt;条款会混合使用吗？&lt;/h3&gt;
+
+&lt;p&gt;有些软件授权协议是和其他授权协议不兼容的。有时意味着你不能在你的应用中同时使用这些不同协议的代码。不过，当今大多数情况下，这不是个问题。除了GPL，你基本不需要担心这个问题。&lt;/p&gt;
+
+&lt;p&gt;你必须去读你使用的代码的授权协议，并且确保你真的看懂了。你认真读几次，你基本就能将不同协议之间的作用弄清楚。&lt;/p&gt;
+
+&lt;h3&gt;总结&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;如果你不遵守软件授权协议，那么你就是亵渎法律&lt;/li&gt;
+&lt;li&gt;使用MIT或者BSD条款下的代码，只需要将授权协议和版权文件，放到你的应用包里。&lt;/li&gt;
+&lt;li&gt;用Apache 2.0协议的代码是免费的，增加授权协议文件和版权文件在你的应用包中，放到MIT或者BSD同样的位置。必须复制完整的授权协议文本。&lt;/li&gt;
+&lt;li&gt;如果你改变了任何的Apache文件，那么你必须为你的改变增加一个突出显示的NOTICE。&lt;/li&gt;
+&lt;li&gt;如果已经有了NOTICE文件，那么就复制到你的应用包中，放到一个用户可以看到的地方，设置模块是比较理想的地方。&lt;/li&gt;
+&lt;li&gt;不用考虑GPL或者LGPL的代码，除非你想为它头疼或者被AppStore驳回。&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;/body&gt;
+&lt;/html&gt;</description>
+                <link>http://Qpai.github.io/2014/05/11/%E5%90%88%E6%B3%95%E4%BD%BF%E7%94%A8cocoapods</link>
+                <guid>http://Qpai.github.io/2014/05/11/合法使用cocoapods</guid>
+                <pubDate>2014-05-11T00:00:00+08:00</pubDate>
+        </item>
 
         <item>
                 <title>自动化分发到testflight脚本</title>
