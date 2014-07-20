@@ -1,0 +1,220 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+<style>
+*{margin:0;padding:0;}
+body {
+	font:13.34px helvetica,arial,freesans,clean,sans-serif;
+	color:black;
+	line-height:1.4em;
+	background-color: #F8F8F8;
+	padding: 0.7em;
+}
+p {
+	margin:1em 0;
+	line-height:1.5em;
+}
+table {
+	font-size:inherit;
+	font:100%;
+	margin:1em;
+}
+table th{border-bottom:1px solid #bbb;padding:.2em 1em;}
+table td{border-bottom:1px solid #ddd;padding:.2em 1em;}
+input[type=text],input[type=password],input[type=image],textarea{font:99% helvetica,arial,freesans,sans-serif;}
+select,option{padding:0 .25em;}
+optgroup{margin-top:.5em;}
+pre,code{font:12px Monaco,"Courier New","DejaVu Sans Mono","Bitstream Vera Sans Mono",monospace;}
+pre {
+	margin:1em 0;
+	font-size:12px;
+	background-color:#eee;
+	border:1px solid #ddd;
+	padding:5px;
+	line-height:1.5em;
+	color:#444;
+	overflow:auto;
+	-webkit-box-shadow:rgba(0,0,0,0.07) 0 1px 2px inset;
+	-webkit-border-radius:3px;
+	-moz-border-radius:3px;border-radius:3px;
+}
+pre code {
+	padding:0;
+	font-size:12px;
+	background-color:#eee;
+	border:none;
+}
+code {
+	font-size:12px;
+	background-color:#f8f8ff;
+	color:#444;
+	padding:0 .2em;
+	border:1px solid #dedede;
+}
+img{border:0;max-width:100%;}
+abbr{border-bottom:none;}
+a{color:#4183c4;text-decoration:none;}
+a:hover{text-decoration:underline;}
+a code,a:link code,a:visited code{color:#4183c4;}
+h2,h3{margin:1em 0;}
+h1,h2,h3,h4,h5,h6{border:0;}
+h1{font-size:170%;border-top:4px solid #aaa;padding-top:.5em;margin-top:1.5em;}
+h1:first-child{margin-top:0;padding-top:.25em;border-top:none;}
+h2{font-size:150%;margin-top:1.5em;border-top:4px solid #e0e0e0;padding-top:.5em;}
+h3{margin-top:1em;}
+hr{border:1px solid #ddd;}
+ul{margin:1em 0 1em 2em;}
+ol{margin:1em 0 1em 2em;}
+ul li,ol li{margin-top:.5em;margin-bottom:.5em;}
+ul ul,ul ol,ol ol,ol ul{margin-top:0;margin-bottom:0;}
+blockquote{margin:1em 0;border-left:5px solid #ddd;padding-left:.6em;color:#555;}
+dt{font-weight:bold;margin-left:1em;}
+dd{margin-left:2em;margin-bottom:1em;}
+sup {
+    font-size: 0.83em;
+    vertical-align: super;
+    line-height: 0;
+}
+* {
+	-webkit-print-color-adjust: exact;
+}
+@media screen and (min-width: 914px) {
+    body {
+        width: 854px;
+        margin:0 auto;
+    }
+}
+@media print {
+	table, pre {
+		page-break-inside: avoid;
+	}
+	pre {
+		word-wrap: break-word;
+	}
+}
+</style>
+<title>从Web中学习</title>
+
+</head>
+<body>
+<p><a href="http://dev.hubspot.com/blog/architecting-a-large-ios-app-with-cocoapods?utm_campaign=iOS_Dev_Weekly_Issue_132&amp;utm_medium=email&amp;utm_source=iOS%2BDev%2BWeekly">原文链接</a></p>
+
+<p>为你的移动应用选择一个正确的架构是一件非常重大的决定。它会影响你的日常工作流程，框架你可能遇到的问题，可能是巨大的财富，也可能是巨大的负担。</p>
+
+<p>HubSpot的应用具有完整的功能，在一个根导航下，它包括一个分析应用，一个社交媒体应用，一个邮件应用和一个联系人管理应用(甚至有更多)。去年夏天，当我们着手建立这个复杂的应用的时候，就知道不得不构建一个适合它规模的架构。</p>
+
+<p>我们其实把每个子应用都当成了一个完全独立的应用，然后用<a href="http://cocoapods.org/">CocoaPods</a>去把他们整合到一个主应用中。</p>
+
+<p>在下面截图中，你能看到每个子应用是怎么作为一个独立的app被整合进主应用的菜单中。</p>
+
+<p><img src="http://cdn2.hubspot.net/hub/51294/file-435767237-png/app_example.png" alt="http://cdn2.hubspot.net/hub/51294/file-435767237-png/app_example.png" /></p>
+
+<p>这给了我们巨大的方便：</p>
+
+<ul>
+<li>最关键的是，我们可以很容易的确保子应用的主分支都是可用的，也可以用子应用的特定版本进行构建。</li>
+<li>我们花大量的时间构建，很少的时间合并。每个个体应用的沙箱可以让它在每个子应用内部迭代，并且花极少的时间与其他子应用整合到一起。如果你在一个有几个人的iOS团队中工作，你肯定会进行.xcodeproj合并。虽然有<a href="http://stackoverflow.com/questions/2615378/how-to-use-git-properly-with-xcode">解决方案</a>，但真是一件痛苦的事情。不过我们现在可以完全避开它了。</li>
+<li>如果有必要，我们可以独立部署每个应用。能在单个应用层次下进行可用性测试是一个巨大的惊喜。我们能在整合之前提交给测试人员，这样我们可以获得更高的品质，更有针对性的反馈。</li>
+<li>因为子应用的切换仅是基于URL的(后面我们会讲到)，这意味着路径内置并且被记录，而不是建了一个特定的视图，去搜索一堆UIViewController，是有明确的路线的。</li>
+</ul>
+
+
+<p>如果我们在一个多人团队里构建一个多功能的应用的时候这种架构为我们节省了大量的时间。听起来像你的菜对吗？往下读吧。</p>
+
+<h2>从Web中学习</h2>
+
+<p>拆分我们的移动应用为一系列的子应用的灵感来源于HubSpot的web架构。</p>
+
+<p>HubSpot的Web架构为了开发速度和可扩展性为构建。我的同事在开发的过程中，我们用了大量的工具和技术，以至于我们<a href="ttp://dev.hubspot.com/blog/how-we-deploy-300-times-a-day">每天有三百次的部署</a>。这是非常重要的，HubSpots产品，是由若干松耦合但是却不同的应用 -- 分析，社交媒体，邮件，日志，和报告工具组合而成。</p>
+
+<p>在Web上面，我们可以编译，测试，部署HubSpot应用独立的每个小模块，包括后端Api和用JAVA写的一些代码，前端的CoffeScript项目，Python项目。移动应用为什么不能做相同的事情呢？</p>
+
+<h2>使用CocoaPods</h2>
+
+<p><a href="http://cocoapods.org/">CocoaPods</a>，非常出色的iOS依赖管理解决方案，是把每件事聚合到一起钥匙。</p>
+
+<p>对于你的这种情况来说一个多应用架构可能有点大材小用，可是CocoaPods当然不是，即使你只是为了聚合少数的类似于使用跟踪、视图组件，或者网络的第三方库，投资几分钟设置它对你来说也是非常值得的。ruby类似于gem一样的语法可以把开源组件几乎无缝的整合到你的应用中。</p>
+
+<p>核心库和共享资源比如登陆，装饰类，以及API/证书的持久化，还有存取器与<a href="https://github.com/allending/Kiwi">Kiwi</a>的测试文件，一个podspec描述文件构建成一个独立的项目。我们发布它们到我们的<a href="http://guides.cocoapods.org/making/private-cocoapods.html">私有CocoaPods库</a>中，并且把他们包含在我们现在完整编译的项目里。但是，我们更进一步，分别建立每个应用，包括社交媒体、邮箱，或者Sources，例如建立一个由podspec描述的独立的项目，然后用CocoaPods构建到一个单独的应用里面。</p>
+
+<p>这意味着，我们可以独立测试每个独立应用的版本，能快速的处理每个单独应用的变化，而不用担心是否会影响其他开发者开发的不相关的子应用的编译。</p>
+
+<p>这个Podfile是针对我们的应用的，大概像下面这样：</p>
+
+<pre><code>platform :ios, '6.0'
+
+# networking, slider navigation, routing
+pod 'AFNetworking', '~&gt; 1.2.1'
+pod 'ViewDeck', '~&gt; 2.2.11'
+pod 'JLRoutes', '~&gt; 1.2'
+
+# sub-apps, pulling from the head of each repo for development. alternately, we can pin it to a release version like we do the other pods
+pod 'HSAPIClient', :head
+pod 'HSCommonResources', :head
+pod 'HSMarketingGraderApp', :head
+pod 'HSContactsApp', :head
+pod 'HSDashboardApp', :head
+pod 'HSLoginApp', :head
+pod 'HSSocialApp', :head
+pod 'HSSourcesApp', :head
+pod 'HSSettingsApp', :head
+pod 'HSSocialReach', :head
+pod 'HSEmailApp', :head
+</code></pre>
+
+<h2>最终整合</h2>
+
+<p>聪明的读者会注意到我们用了一组开源工具，这是能把子应用粘合到一起的关键，<a href="https://github.com/Inferis/ViewDeck">IIViewDeck</a> 和 <a href="https://github.com/joeldev/JLRoutes">JLRoutes</a></p>
+
+<p>我们并没有提供信息在基应用，关于不同的目录选项，安排每个字应用能操作，每个子应用提供单独的类，实现一个HSBaseApp协议，用几个方法。</p>
+
+<p>我们现在并没有提供任何信息给基应用，为了让它可以处理每个菜单中的选项，和安排每个子应用的操作，每个子应用都提供一个实现了HSBaseApp协议若干方法的类：</p>
+
+<pre><code>@protocol HSBaseApp &lt;NSObject&gt;
++ (UINavigationController   *)baseNavigationController;
++ (NSArray *)menuItems;
++ (NSArray *)routesToRegister;
+@end
+</code></pre>
+
+<p>下面是实现的例子：</p>
+
+<pre><code>+ (UINavigationController *)baseNavigationController {
+    return [[HSNavigationController alloc] initWithRootViewController:[[HSSocialViewController alloc] initWithNibName:@"HSSocialViewController" bundle:nil]];
+}
+
++ (NSArray *)menuItems {
+    HSMenuItem *calendarMenuItem = [[HSMenuItem alloc] initWithTitle:@"Publishing" icon:@"\\" launchHubSpotApp:[HSSocial class]];
+    calendarMenuItem.sectionTitle = @"Social";
+
+    return @[calendarMenuItem];
+}
+
++ (NSArray *)routesToRegister {
+    HSRoute *newItemRoute = [HSRoute routeWithUrl:@"social/new" andAction:^BOOL(id&lt;HSRoutingDelegate&gt; routingDelegate, NSString *url, NSDictionary *parameters) {
+    //  handle route, usually by suppying a UIViewController to the routingDelegate
+    }];
+
+    NSArray *routes = @[newItemRoute]; // could be more routes here too
+
+    return routes;
+}
+</code></pre>
+
+<p>我们用路径的方式处理传入的消息通知，在主应用中用相同的scheme去链接每个子应用的切换，比如我们会从Sources或者社交媒体切换到联系人。</p>
+
+<p>HSRoutingDelegate 有一点小魔力，可以获取当前活跃的导航控制器，我们就可以推送到最上面，或者生成一个基于上下文的路径对象，但是无论如何，这是一个基于block的语法简单的针对JLRoutes封装。</p>
+
+<h2>我们可以做什么？</h2>
+
+<p>长时间的运行，我们希望通过我们简单的Kiwi的测试，一些共享库，编译在KIF测试，一个子应用的每个版本，KIF测试被构建在一个持续集成安装，我们知道每个好的版本，驱动每个主应用的发布。</p>
+
+<p>我们希望可以通过针对一些共享库的简单的Kiwi测试，子应用的每个版本的KIF测试，通过Kiwi和KIF测试在持续集成中，这样，我们就可以取得每个好的版本，来进行对主应用的每次发布</p>
+
+<p>从长远来看，我们将增加针对一些共享库的Kiwi测试，建立KIF测试，以便子应用的每个版本都可以在持续集成中进行Kiwi和KIF测试，我们可以选择已知的没有问题的版本进行发布。</p>
+
+<p>你们是怎么组织多人大型iOS应用开发的？有没有更好的办法，欢迎收到来自你的意见。</p>
+</body>
+</html>
