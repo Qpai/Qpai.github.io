@@ -113,84 +113,81 @@
       <span>09 March 2014</span>
     </div>
     <div class="content">
-      <p>最近公司项目有一些分发的需求，所以我搜索了一些资料，实现了自动打包并且上传到testflight的脚本。</p>
+      
+<p>最近公司项目有一些分发的需求，所以我搜索了一些资料，实现了自动打包并且上传到testflight的脚本。</p>
 
 <p>大概需求有这些</p>
 
 <ol>
-<li>将版本号和用户名显示在图标上面</li>
-
-<li>Archive一个HOC的包</li>
-
-<li>本地备份一个ipa和dsym文件</li>
-
-<li>上传至Testflight</li>
+  <li>将版本号和用户名显示在图标上面</li>
+  <li>Archive一个HOC的包</li>
+  <li>本地备份一个ipa和dsym文件</li>
+  <li>上传至Testflight</li>
 </ol>
 
-<h2 id="">一、图标显示版本号</h2>
-
+<h2 id="section">一、图标显示版本号</h2>
 <ol>
-<li>
-<p>安装两个shell工具</p>
+  <li>
+    <p>安装两个shell工具</p>
 
-<pre><code> brew install imagemagick  
- brew install ghostscript</code></pre>
-</li>
+    <pre><code> brew install imagemagick  
+ brew install ghostscript
+</code></pre>
+  </li>
+  <li>
+    <p>在Build Phases，新建一个Run Script。</p>
 
-<li>
-<p>在Build Phases，新建一个Run Script。</p>
+    <pre><code>    #这里可以讲版本号设置成SVN或者git的版本号，以防冲突  #/usr/libexec/PlistBuddy -c "Set :CFBundleVersion ${SVN_REVISION}""$INFO_PLIST_PATH"  version=`/usr/libexec/PlistBuddy -c "Print CFBundleVersion" "${INFOPLIST_FILE}"`
+</code></pre>
 
-<pre><code>    #这里可以讲版本号设置成SVN或者git的版本号，以防冲突</code></pre>
+    <p>function processIcon() {
+     export PATH=$PATH:/usr/local/bin
+     base_file=$1
+     base_path=<code>find "${SRCROOT}/&lt;project name&gt;" -name $base_file</code></p>
 
-<p>#/usr/libexec/PlistBuddy -c “Set :CFBundleVersion ${SVN_REVISION}”“$INFO_PLIST_PATH” version=<code>/usr/libexec/PlistBuddy -c &quot;Print CFBundleVersion&quot; &quot;${INFOPLIST_FILE}&quot;</code></p>
-
-<p>function processIcon() { export PATH=$PATH:/usr/local/bin base_file=$1 base_path=<code>find &quot;${SRCROOT}/&lt;project name&gt;&quot; -name $base_file</code></p>
-
-<pre><code> echo &quot;Processing 43 $base_path&quot;
- 
+    <pre><code> echo "Processing 43 $base_path"
+    
  if [[ ! -f ${base_path} || -z ${base_path} ]]; then
  return;
  fi
- 
- echo &quot; 11 ${target_path}&quot;
- 
+    
+ echo " 11 ${target_path}"
+    
  target_file=$base_file
- target_path=&quot;${CONFIGURATION_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/${target_file}&quot;
- 
- 
- 
- if [ $CONFIGURATION = &quot;Release&quot; ]; then
- cp &quot;${base_path}&quot; &quot;$target_path&quot;
+ target_path="${CONFIGURATION_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/${target_file}"
+    
+    
+    
+ if [ $CONFIGURATION = "Release" ]; then
+ cp "${base_path}" "$target_path"
  return
  fi
- 
- width=`identify -format %w &quot;${base_path}&quot;`
- 
+    
+ width=`identify -format %w "${base_path}"`
+    
  convert -background '#0008' -fill white -gravity center -size ${width}x40\
- caption:&quot;${version} ${LOGNAME}&quot;\
- &quot;${base_path}&quot; +swap -gravity south -composite &quot;${target_path}&quot;
- 
- echo &quot;Overlayed ${target_path}&quot;</code></pre>
+ caption:"${version} ${LOGNAME}"\
+ "${base_path}" +swap -gravity south -composite "${target_path}"
+    
+ echo "Overlayed ${target_path}"  }
+</code></pre>
 
-<p>}</p>
-
-<p>processIcon “Icon_base.png” processIcon “Icon_base@2x.png”</p>
-</li>
+    <p>processIcon “Icon_base.png”
+ processIcon “Icon_base@2x.png”</p>
+  </li>
 </ol>
 
 <ul>
-<li>这里只涉及到了Icon.png和Icon@2x.png的图标，还可以增加更多。</li>
-
-<li>处理了release的配置，如果发布状态，则不显示版本号，可以根据需求修改。</li>
-
-<li>脚本编辑框下面有一个选项：Show environment variables in build log。如果勾上，那你的log就会出现一堆本地的环境变量及其值，你可以打印出来，写脚本的时候就知道哪些是可以用的环境变量。但是如果调试shell脚本的时候最好不勾上，因为很多，而log最多显示200行，你shell的log可能会被隐藏掉，影响你的调试。</li>
+  <li>这里只涉及到了Icon.png和Icon@2x.png的图标，还可以增加更多。  </li>
+  <li>处理了release的配置，如果发布状态，则不显示版本号，可以根据需求修改。  </li>
+  <li>脚本编辑框下面有一个选项：Show environment variables in build   log。如果勾上，那你的log就会出现一堆本地的环境变量及其值，你可以打印出来，写脚本的时候就知道哪些是可以用的环境变量。但是如果调试shell脚本的时候最好不勾上，因为很多，而log最多显示200行，你shell的log可能会被隐藏掉，影响你的调试。  </li>
 </ul>
 
-<h2 id="_2">二、自动打包和上传。</h2>
-
+<h2 id="section-1">二、自动打包和上传。</h2>
 <p>在xcode左上角找到edit schame，然后找到左边有Archive，点击旁边的三角，在post-actions增加一个run script。因为需要archive之后，才能找到相应的xcarchive文件，所以是后置运行脚本。</p>
 
-<p>shell脚本如下： #!/bin/sh</p>
+<p>shell脚本如下：
+    #!/bin/sh</p>
 
 <pre><code>#  Script.sh
 #  IconOverlaying
@@ -200,14 +197,14 @@
 
 
 # define vars
-TESTFLIGHT_TEAM_TOKEN=&quot;&lt;team token&gt;&quot;
-TESTFLIGHT_API_TOKEN=&quot;&lt;user token&gt;&quot;
-TESTFLIGHT_DISTRIBUTION_LIST=&quot;QpaiTeam&quot;
-BACK_UP_PATH=&quot;${SOURCE_ROOT}/IpaBackup&quot;
+TESTFLIGHT_TEAM_TOKEN="&lt;team token&gt;"
+TESTFLIGHT_API_TOKEN="&lt;user token&gt;"
+TESTFLIGHT_DISTRIBUTION_LIST="QpaiTeam"
+BACK_UP_PATH="${SOURCE_ROOT}/IpaBackup"
 
 
 
-echo &quot;find last Archives&quot;
+echo "find last Archives"
 newest=
 backIFS=$IFS
 IFS=$(echo -en '\n\b')
@@ -221,77 +218,72 @@ then
 newest=$f
 fi
 done
-echo &quot;${f}&quot;
+echo "${f}"
 FS=$backIFS
 
 LASTARCHIVE_PATH=$f
 
 # it's build version,or git version or svn version
-VERSION=`/usr/libexec/PlistBuddy -c &quot;Print CFBundleVersion&quot; &quot;${INFOPLIST_FILE}&quot;`
+VERSION=`/usr/libexec/PlistBuddy -c "Print CFBundleVersion" "${INFOPLIST_FILE}"`
 
-IPA_PATH=&quot;${BACK_UP_PATH}/${VERSION}.ipa&quot;
-DSYM_PATH=&quot;${LASTARCHIVE_PATH}/dSYMs/${PROJECT_NAME}.app.dSYM&quot;
-COPY_DSYM_PATH=&quot;${BACK_UP_PATH}/${VERSION}.app.dSYM&quot;
+IPA_PATH="${BACK_UP_PATH}/${VERSION}.ipa"
+DSYM_PATH="${LASTARCHIVE_PATH}/dSYMs/${PROJECT_NAME}.app.dSYM"
+COPY_DSYM_PATH="${BACK_UP_PATH}/${VERSION}.app.dSYM"
 
 # create backup folder
-mkdir -p &quot;${BACK_UP_PATH}&quot;
+mkdir -p "${BACK_UP_PATH}"
 
-rm &quot;${IPA_PATH}&quot;
+rm "${IPA_PATH}"
 
-echo &quot;create ipa from archive&quot;
+echo "create ipa from archive"
 
-xcodebuild -exportArchive -exportFormat IPA -archivePath &quot;${LASTARCHIVE_PATH}&quot; -exportPath &quot;${IPA_PATH}&quot;
+xcodebuild -exportArchive -exportFormat IPA -archivePath "${LASTARCHIVE_PATH}" -exportPath "${IPA_PATH}"
 
-echo &quot;copy dsym to back-up&quot;
-cp -r &quot;${DSYM_PATH}&quot; &quot;${COPY_DSYM_PATH}&quot;
+echo "copy dsym to back-up"
+cp -r "${DSYM_PATH}" "${COPY_DSYM_PATH}"
 
 
 #zipping the .dSYM to send to Testflight
-echo &quot;Generating dsym zip file&quot;
-/usr/bin/zip -r &quot;${COPY_DSYM_PATH}.zip&quot;&quot;${COPY_DSYM_PATH}&quot;
+echo "Generating dsym zip file"
+/usr/bin/zip -r "${COPY_DSYM_PATH}.zip""${COPY_DSYM_PATH}"
 
 # sends the .ipa file to TestFlight
 
 
 
 
-echo &quot;Sending to TestFlight&quot;
-curl http://testflightapp.com/api/builds.json -F file=&quot;@${IPA_PATH}&quot; \
--F dsym=&quot;@${COPY_DSYM_PATH}.zip&quot; \
--F api_token=&quot;${TESTFLIGHT_API_TOKEN}&quot; \
--F team_token=&quot;${TESTFLIGHT_TEAM_TOKEN}&quot; \
--F notes=&quot;This build was uploaded via the upload API&quot; \
+echo "Sending to TestFlight"
+curl http://testflightapp.com/api/builds.json -F file="@${IPA_PATH}" \
+-F dsym="@${COPY_DSYM_PATH}.zip" \
+-F api_token="${TESTFLIGHT_API_TOKEN}" \
+-F team_token="${TESTFLIGHT_TEAM_TOKEN}" \
+-F notes="This build was uploaded via the upload API" \
 -F notify=False \
--F distribution_lists=&quot;${TESTFLIGHT_DISTRIBUTION_LIST}&quot;
-echo Submission ended</code></pre>
+-F distribution_lists="${TESTFLIGHT_DISTRIBUTION_LIST}"
+echo Submission ended
+</code></pre>
 
-<h3 id="_3">执行了如下功能：</h3>
+<h3 id="section-2">执行了如下功能：</h3>
 
 <ol>
-<li>寻找最后一个archive</li>
-
-<li>生成一个本地备份的文件夹</li>
-
-<li>通过最后一个archive生成一个以build版本号命名的ipa，并且保存于备份文件夹中。</li>
-
-<li>把最后一个archive的dsym文件复制到备份文件中，并且重命名为版本号。</li>
-
-<li>把dsym文件打包成zip</li>
-
-<li>通过curl将ipa和dysm上传到testflight</li>
+  <li>寻找最后一个archive</li>
+  <li>生成一个本地备份的文件夹</li>
+  <li>通过最后一个archive生成一个以build版本号命名的ipa，并且保存于备份文件夹中。</li>
+  <li>把最后一个archive的dsym文件复制到备份文件中，并且重命名为版本号。</li>
+  <li>把dsym文件打包成zip</li>
+  <li>通过curl将ipa和dysm上传到testflight</li>
 </ol>
 
-<h3 id="_4">解释一些需要设置的变量名含义：</h3>
+<h3 id="section-3">解释一些需要设置的变量名含义：</h3>
 
 <ol>
-<li>TESTFLIGHT_TEAM_TOKEN就是你Testflight里面team的token</li>
-
-<li>TESTFLIGHT_API_TOKEN是你用户的token</li>
-
-<li>TESTFLIGHT_DISTRIBUTION_LIST是你的包分发的目标受众，可以是team名，也可以是用户名，用逗号隔开。</li>
+  <li>TESTFLIGHT_TEAM_TOKEN就是你Testflight里面team的token</li>
+  <li>TESTFLIGHT_API_TOKEN是你用户的token</li>
+  <li>TESTFLIGHT_DISTRIBUTION_LIST是你的包分发的目标受众，可以是team名，也可以是用户名，用逗号隔开。</li>
 </ol>
 
 <p>注意： 最下面的curl就是上传到testflight的接口，和传参。具体是不是上传正确了，需要看log。</p>
+
     </div>
 
   
@@ -328,7 +320,9 @@ echo Submission ended</code></pre>
      
     	<li><a href="/tags.html#blog-ref">blog <span>3</span></a></li>
      
-    	<li><a href="/tags.html#developer,shell，xcode-ref">developer,shell，xcode <span>1</span></a></li>
+    	<li><a href="/tags.html#developer-ref">developer <span>3</span></a></li>
+     
+    	<li><a href="/tags.html#shell，xcode-ref">shell，xcode <span>1</span></a></li>
     
   
 

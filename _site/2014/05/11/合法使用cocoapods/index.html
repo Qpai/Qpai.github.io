@@ -1,3 +1,5 @@
+<p>— layout: post category : 翻译 title : Afnetworking 2.0 Tutorial tags : [AFNetworking, ios, blog, developer] — </p>
+
 <h2 id="cocoapods">合法使用CocoaPods</h2>
 
 <p><a href="http://blog.bignerdranch.com/4638-using-cocoapods-without-going-court/">原文地址</a></p>
@@ -7,12 +9,11 @@
 <p>你想想，每个CocoaPod都基于软件授权协议下被分发，这个软件授权协议对你是有要求的。遵守它，你才能使用这个软件。但是如果你不想遵守授权协议的要求内容，你就失去了使用这个软件的权利。然后你必须删除这个pod并且做一些其他的事情。否则，你将会面临：</p>
 
 <ol>
-<li>应用被驳回。</li>
-
-<li>上法庭。</li>
+  <li>应用被驳回。</li>
+  <li>上法庭。</li>
 </ol>
 
-<h2 id="">我不是一个法律从业人员，你知道吗？</h2>
+<h2 id="section">我不是一个法律从业人员，你知道吗？</h2>
 
 <p>在我们开始之前，有些事情必须说清楚：这篇文章不是法律建议，如果你目前遇到了和授权相关的问题，那么请你去找法律顾问。如果你没有理由的担心，并且已经影响了你的生活质量，那么看一下心理医生吧还是。</p>
 
@@ -22,7 +23,7 @@
 
 <p>在你的世界里可能流行不同的软件授权协议。检出<a href="https://tldrlegal.com/">tl;drLegal</a>为一个gist，然后就像吃一顿美味的意大利面条一样好好研究一下授权协议文本。很多授权协议的作者也会解答一些问题，这能帮助你理解和运用软件授权协议。</p>
 
-<h2 id="_2">没协议不使用</h2>
+<h2 id="section-1">没协议不使用</h2>
 
 <p>如果没有软件授权协议，默认的软件授权协议如下：作者独家使用，你不能使用。</p>
 
@@ -30,18 +31,18 @@
 
 <p>当你复制一个组件的代码，你必须确保维护了它的软件授权协议。CocoaPods 维护了，但是如果你手动添加第三方的组件，你就得小心。</p>
 
-<h3 id="academic__">ACADEMIC软件授权协议：注意 &amp; 条款</h3>
+<h3 id="academic--">ACADEMIC软件授权协议：注意 &amp; 条款</h3>
 
 <p>一个软件授权协议最通常的要求是包括版权注意和软件授权协议条款。MTI软件协议就像下面这样:</p>
 
-<pre><code>The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.</code></pre>
+<pre><code>The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
+</code></pre>
 
 <p>你应该遵守每个pod设定的最小范围的条款，CocoaPods就是这么做的，它将所有pod的条款复制整合成一个大的授权协议文件，然后帮助你满足这些条款。该文件有两种形式：</p>
 
 <ol>
-<li>在你的app中以Markdown的文件存在。</li>
-
-<li>以Plist的形式被包含在设置中。</li>
+  <li>在你的app中以Markdown的文件存在。</li>
+  <li>以Plist的形式被包含在设置中。</li>
 </ol>
 
 <p>显示这些信息是为了让用户更容易看到他正在用的组件，它也给组件的作者以宣传。就是说，仅仅包含在你的app包中的注意和条款可能不够，你的app的每个副本都会包含他们。</p>
@@ -49,16 +50,13 @@
 <p>很多所谓的学术许可证其实什么要求也没有。一般学术许可证包括这些：</p>
 
 <ol>
-<li><a href="http://opensource.org/licenses/MIT">麻省理工许可证（MIT,又称X 11）</a></li>
-
-<li><a href="http://opensource.org/licenses/BSD-3-Clause">新版3条款的BSD license (Berkeley Software Distribution 伯克利软件套件 开源协议)</a></li>
-
-<li><a href="http://opensource.org/licenses/BSD-2-Clause">简版2条款的BSD licenes</a></li>
-
-<li><a href="http://opensource.org/licenses/ISC">最简1条款的BSD licenes</a></li>
+  <li><a href="http://opensource.org/licenses/MIT">麻省理工许可证（MIT,又称X 11）</a></li>
+  <li><a href="http://opensource.org/licenses/BSD-3-Clause">新版3条款的BSD license (Berkeley Software Distribution 伯克利软件套件 开源协议)</a></li>
+  <li><a href="http://opensource.org/licenses/BSD-2-Clause">简版2条款的BSD licenes</a> </li>
+  <li><a href="http://opensource.org/licenses/ISC">最简1条款的BSD licenes</a></li>
 </ol>
 
-<h3 id="apache_20">APACHE 2.0</h3>
+<h3 id="apache-20">APACHE 2.0</h3>
 
 <p>在冗长的注意和条款上面，Apache 许可证加上了：“你必须在你修改的文件显著位置标明：你修改了文件”</p>
 
@@ -72,38 +70,34 @@
 
 <p>我们唯一的选项是静态引入到其他代码，所以基于LGPL的组件必须为使用者开源。使用者也可以修改，并且发布他们自己的版本，但是也必须开源。</p>
 
-<pre><code>I recommend you steer clear of using any LGPL-licensed software in a close-sourced app.</code></pre>
+<pre><code>I recommend you steer clear of using any LGPL-licensed software in a close-sourced app.
+</code></pre>
 
 <p>我建议你的闭源应用完全不要包括任何使用LGPL条款的软件。</p>
 
 <h3 id="gpl">GPL</h3>
 
-<p>The GPL is the GNU General Public License. GPL就是GNU General Public License。如果你的应用中包含任何限制在GPL条款下的代码，都不能被发布到appstore中。GPL禁止增加任何条款或者条件在GPL的条款之上。APPStore增加了额外的条款在GLP之上，所以非GPL的代码才能出现在Appstore中。</p>
+<p>The GPL is the GNU General Public License.
+GPL就是GNU General Public License。如果你的应用中包含任何限制在GPL条款下的代码，都不能被发布到appstore中。GPL禁止增加任何条款或者条件在GPL的条款之上。APPStore增加了额外的条款在GLP之上，所以非GPL的代码才能出现在Appstore中。</p>
 
 <p>如果你不是要发布到appstore中，那么你可以拉取GPL库，记住，你的代码也要获得GPL的许可。</p>
 
-<h3 id="_3">条款会混合使用吗？</h3>
+<h3 id="section-2">条款会混合使用吗？</h3>
 
 <p>有些软件授权协议是和其他授权协议不兼容的。有时意味着你不能在你的应用中同时使用这些不同协议的代码。不过，当今大多数情况下，这不是个问题。除了GPL，你基本不需要担心这个问题。</p>
 
 <p>你必须去读你使用的代码的授权协议，并且确保你真的看懂了。你认真读几次，你基本就能将不同协议之间的作用弄清楚。</p>
 
-<h3 id="_4">总结</h3>
+<h3 id="section-3">总结</h3>
 
 <ul>
-<li>如果你不遵守软件授权协议，那么你就是亵渎法律</li>
-
-<li>使用MIT或者BSD条款下的代码，只需要将授权协议和版权文件，放到你的应用包里。</li>
-
-<li>用Apache 2.0协议的代码是免费的，增加授权协议文件和版权文件在你的应用包中，放到MIT或者BSD同样的位置。必须复制完整的授权协议文本。</li>
-</ul>
-
-<ol>
-<li>如果你改变了任何的Apache文件，那么你必须为你的改变增加一个突出显示的NOTICE。</li>
-
-<li>如果已经有了NOTICE文件，那么就复制到你的应用包中，放到一个用户可以看到的地方，设置模块是比较理想的地方。</li>
-</ol>
-
-<ul>
-<li>不用考虑GPL或者LGPL的代码，除非你想为它头疼或者被AppStore驳回。</li>
+  <li>如果你不遵守软件授权协议，那么你就是亵渎法律</li>
+  <li>使用MIT或者BSD条款下的代码，只需要将授权协议和版权文件，放到你的应用包里。</li>
+  <li>用Apache 2.0协议的代码是免费的，增加授权协议文件和版权文件在你的应用包中，放到MIT或者BSD同样的位置。必须复制完整的授权协议文本。
+    <ol>
+      <li>如果你改变了任何的Apache文件，那么你必须为你的改变增加一个突出显示的NOTICE。</li>
+      <li>如果已经有了NOTICE文件，那么就复制到你的应用包中，放到一个用户可以看到的地方，设置模块是比较理想的地方。</li>
+    </ol>
+  </li>
+  <li>不用考虑GPL或者LGPL的代码，除非你想为它头疼或者被AppStore驳回。</li>
 </ul>

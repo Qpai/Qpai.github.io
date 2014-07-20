@@ -1,7 +1,9 @@
-<hr />
-<p>layout: post category : other</p>
 
-<h2 id="tags__dyci_ios_blog_developer__xcode">tags : [Dyci, ios, blog, developer ,插件 ,xcode]</h2>
+<hr />
+<p>layout: post
+category : other
+tags : [Dyci, ios, blog, developer ,插件 ,xcode]
+—</p>
 
 <p>昨天晚上看到了infoQ的iOS周报，发现了一个非常酷的动态注入库<a href="https://github.com/DyCI/dyci-main">DyCi</a>，他可以做到动态的把代码注入到已经运行的程序中。</p>
 
@@ -13,23 +15,19 @@
 
 <p>这篇文章虽然叫实践，其实目前只是对Dyci文档的摘抄，和我简单尝试，以后随着实践的深入还会陆续加入新的内容。</p>
 
-<h2 id="">安装步骤</h2>
+<h2 id="section">安装步骤</h2>
 
 <p>首先看一下安装步骤(<a href="https://github.com/DyCI/dyci-main/wiki/Installation">官方安装介绍</a>)，因为Dyci需要在xcode上面安装一个插件，所以需要你运行一个sh的脚本。</p>
 
 <ol>
-<li>下载脚本</li>
-
-<li>cd 到脚本目录</li>
-
-<li>运行脚本</li>
+  <li>下载脚本</li>
+  <li>cd 到脚本目录</li>
+  <li>运行脚本</li>
 </ol>
 
-<p><code>git clone https://github.com/DyCI/dyci-main.git</code></p>
-
-<p><code>cd dyci-main/Install/</code></p>
-
-<p><code>/install.sh</code></p>
+<p><code>git clone https://github.com/DyCI/dyci-main.git</code><br />
+<code>cd dyci-main/Install/</code><br />
+<code>/install.sh</code></p>
 
 <p>如果出现下面的提示，证明你安装成功了：</p>
 
@@ -41,38 +39,42 @@
 == Installing Xcode DCI plugin : Done.
 Now you can use DCI from the Xcode :P (^X)
 
-DCI was successfully installed!</code></pre>
+DCI was successfully installed!
+</code></pre>
 
 <p>然后重启Xcode，因为涉及到插件，必须重启在能看到，重启之后，会在xcode的菜单product中看到recompile and inject项，还有快捷键^X。</p>
 
-<h2 id="_2">引入工程</h2>
+<h2 id="section-1">引入工程</h2>
 
 <ul>
-<li>最简单的办法</li>
+  <li>最简单的办法</li>
 </ul>
 
 <p>用cocoapod，在Podfile中加入</p>
 
-<pre><code>pod 'dyci', :git =&gt; 'https://github.com/DyCI/dyci-main.git'</code></pre>
+<pre><code>pod 'dyci', :git =&gt; 'https://github.com/DyCI/dyci-main.git'
+</code></pre>
 
 <ul>
-<li>作为自项目</li>
+  <li>作为自项目</li>
 </ul>
 
 <p>将dyci项目加入到你工程项目的workspace中，并且在工程项目的Build Phase的Link Binary With Libraries中加入对dyci的依赖：</p>
 
-<p><img alt="https://raw.github.com/DyCI/dyci.github.com/master/img/dyci-adding-as-static-library.png" src="https://raw.github.com/DyCI/dyci.github.com/master/img/dyci-adding-as-static-library.png" /></p>
+<p><img src="https://raw.github.com/DyCI/dyci.github.com/master/img/dyci-adding-as-static-library.png" alt="https://raw.github.com/DyCI/dyci.github.com/master/img/dyci-adding-as-static-library.png" /></p>
 
 <ul>
-<li>作为静态库</li>
+  <li>作为静态库</li>
 </ul>
 
-<p>下载dyci.framework从<a href="https://github.com/DyCI/dyci-main/downloads">这里</a> <br />加入静态库到你的项目中 <br />在other link flag中加入-Objc</p>
+<p>下载dyci.framework从<a href="https://github.com/DyCI/dyci-main/downloads">这里</a> <br />
+加入静态库到你的项目中 <br />
+在other link flag中加入-Objc</p>
 
-<h2 id="_3">碰到的问题</h2>
+<h2 id="section-2">碰到的问题</h2>
 
 <ul>
-<li>xib可以动态变动，但是代码不行</li>
+  <li>xib可以动态变动，但是代码不行</li>
 </ul>
 
 <p>我新建了一个单页面项目，在里面加入了一个label，^x，可以动态呈现。可是我在VC中的viewDidLoad给self.view加入label，却不能动态呈现，找了半天最后发现了<a href="https://github.com/DyCI/dyci-main/wiki/Update-on-Injection">答案</a></p>
@@ -86,15 +88,18 @@ DCI was successfully installed!</code></pre>
 }
 
 - (void)updateOnClassInjection {
-   // &quot;Emulating&quot; viewDidLoad method  
+   // "Emulating" viewDidLoad method  
    // Cleaning up all views and  
    NSArray * subviews = [[self view] subviews];
    for (UIView * v in subviews) {
       [v removeFromSuperview];
    }
    [self createGUI];
-}</code></pre>
+}
+</code></pre>
 
 <p>在这个wiki里面，也涉及到了资源的注入，需要实现另外一个方法：</p>
 
-<pre><code>-(void)updateOnResourceInjection:(NSString *)resourcePath</code></pre>
+<pre><code>-(void)updateOnResourceInjection:(NSString *)resourcePath
+</code></pre>
+
