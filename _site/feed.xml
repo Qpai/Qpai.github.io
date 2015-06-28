@@ -5,8 +5,8 @@
     <description>你好，我的名字叫李祎，我是一只码农，目前专注于iOS/客户端架构设计/Hybrid/项目管理</description>
     <link>http://qpai.github.io/</link>
     <atom:link href="http://qpai.github.io/feed.xml" rel="self" type="application/rss+xml" />
-    <pubDate>Sun, 28 Jun 2015 23:46:05 +0800</pubDate>
-    <lastBuildDate>Sun, 28 Jun 2015 23:46:05 +0800</lastBuildDate>
+    <pubDate>Mon, 29 Jun 2015 07:54:44 +0800</pubDate>
+    <lastBuildDate>Mon, 29 Jun 2015 07:54:44 +0800</lastBuildDate>
     <generator>Jekyll v2.1.1</generator>
     
       <item>
@@ -1089,18 +1089,8 @@ echo Submission ended
       </item>
     
       <item>
-        <title>Dyci动态注入实践</title>
-        <description>
-&lt;hr /&gt;
-&lt;p&gt;layout:     post
-title:      “DyCI动态注入实践”
-subtitle:   “如何使用DyCI”
-date:       2014-03-03 12:00:00
-author:     “Qpai”
-header-img: “img/cd-background-img.jpg”
-—&lt;/p&gt;
-
-&lt;p&gt;昨天晚上看到了infoQ的iOS周报，发现了一个非常酷的动态注入库&lt;a href=&quot;https://github.com/DyCI/dyci-main&quot;&gt;DyCi&lt;/a&gt;，他可以做到动态的把代码注入到已经运行的程序中。&lt;/p&gt;
+        <title>DyCI动态注入实践</title>
+        <description>&lt;p&gt;昨天晚上看到了infoQ的iOS周报，发现了一个非常酷的动态注入库&lt;a href=&quot;https://github.com/DyCI/dyci-main&quot;&gt;DyCi&lt;/a&gt;，他可以做到动态的把代码注入到已经运行的程序中。&lt;/p&gt;
 
 &lt;p&gt;可能有些同学还是不太明白具体有什么用，我给大家解释一下：&lt;/p&gt;
 
@@ -1199,7 +1189,7 @@ DCI was successfully installed!
 &lt;/code&gt;&lt;/pre&gt;
 
 </description>
-        <pubDate>Mon, 03 Mar 2014 00:00:00 +0800</pubDate>
+        <pubDate>Mon, 03 Mar 2014 20:00:00 +0800</pubDate>
         <link>http://qpai.github.io/2014/03/03/DyCI%E5%8A%A8%E6%80%81%E6%B3%A8%E5%85%A5%E5%AE%9E%E8%B7%B5/</link>
         <guid isPermaLink="true">http://qpai.github.io/2014/03/03/DyCI%E5%8A%A8%E6%80%81%E6%B3%A8%E5%85%A5%E5%AE%9E%E8%B7%B5/</guid>
         
