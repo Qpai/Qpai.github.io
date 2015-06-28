@@ -1,0 +1,6 @@
+siteurl: http://qpai.github.io/
+url: "http://lqpai.github.io"
+baseurl: "http://qpai.github.io"
+markdown: maruku
+pygments: false
+paginate: 
