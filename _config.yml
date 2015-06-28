@@ -1,0 +1,21 @@
+# Site settings Update for my Blog : spaceg.github.io Do.9.April 15.49:24 2015 
+title: Qpai
+email: qingliangpai@126.com
+description: "你好，我的名字叫李祎，我是一只码农，目前专注于iOS/客户端架构设计/Hybrid/项目管理"
+baseurl: ""
+url: "http://qpai.github.io"
+twitter_username: 
+github_username:  qingliangpai
+google_username:  
+instagram_username:  
+
+
+# Build settings
+markdown: kramdown
+highlighter: pygments
+permalink: pretty
+paginate: 
+exclude: ["less","node_modules","Gruntfile.js","package.json","README.md"]
+
+paginate: 5 #posts per page
+

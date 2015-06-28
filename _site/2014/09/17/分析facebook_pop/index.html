@@ -1,0 +1,523 @@
+<!DOCTYPE html>
+<html lang="en">
+
+
+
+<head>
+ <!-- 
+      loads the http over https ssl - 
+      welcome to my website! 
+      follow me at my twitter  
+      https://www.twitter.com/LucasGatsas
+      www.lucasgatsas.ch - switzerland. 
+
+                                                    --> 
+
+ <!-- here my e-mail to contact me lucasgatsas@gmail.com --> 
+<!--
+<script type="text/javascript">
+var host = "https://lucasgatsas.ch/";
+if ((host == window.location.host) && (window.location.protocol != "https:"))
+    window.location.protocol = "https";
+</script>
+-->
+<!-- Microsoft Internet Explorer documentMode compatMode setting IE Modus --> 
+<script type="text/javascript">
+var IE = null;
+if (window.navigator.appName == "Microsoft Internet Explorer") {
+  if (document.documentMode) {
+  
+    IE = document.documentMode; 
+    } else {
+   
+        IE = 5; 
+          if (document.compatMode) {
+      if (document.compatMode == "CSS1Compat")
+      IE = 11; 
+      }
+    }
+  }
+</script>
+
+    <meta charset="utf-8">
+    <!-- X-UA --> 
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta http-equiv="X-UA-Compatible" content="IE=11"/>
+    <link rel="author" title="Lucas Gatsas" href="https://plus.google.com/101826267816845608605/posts"/>
+
+
+ <meta name="google-site-verification" content="F5lkHug5Hdw4XRPcwJuQsK01auhET-yWy1o5SrCM-Sw" />
+
+    <meta name="google" content="notranslate" />
+    <!-- Viewport --> 
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- index ROBOTS follow --> 
+    <meta name="robots"    content="index, follow" />
+    <!-- Site Desciption --> 
+    <meta name="description" content="你好，我的名字叫李祎，我是一只码农，目前专注于iOS/客户端架构设计/Hybrid/项目管理">
+        <!-- Site Desciption --> 
+    <meta name="keywords" content="Qpai,李祎,iOS,Hybrid">
+    <!-- Favicon --> 
+    <link rel="shortcut icon" href="/img/favicon-7326478236.png" type="image/x-icon" />
+    <!-- Blog Title -->
+    <title>李祎 - 北京的一只码农 </title>
+
+    <!--     <title>分析Facebook pop - Qpai</title>
+--> 
+    <!-- Property Metas --> 
+    <meta property="og:image" content="/img/93TyTG3x.png"/>
+    <meta property="og:title" content="你好，我的名字叫李祎，我是一只码农，目前专注于iOS/客户端架构设计/Hybrid/项目管理"/>
+    <meta property="og:site_name" content="你好，我的名字叫李祎，我是一只码农，目前专注于iOS/客户端架构设计/Hybrid/项目管理"/>
+    <!-- Canonical -->
+    <link rel="canonical" href="http://qpai.github.io/2014/09/17/%E5%88%86%E6%9E%90facebook_pop/">
+    <!-- StyleSheet -->
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/css/spaceg.stylesheets.css">
+    <!-- Fonts -->
+    <link href='https://fonts.googleapis.com/css?family=Merriweather:400,300,300italic,400italic,700,700italic,900,900italic' rel='stylesheet' type='text/css'>
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link href='https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Playfair+Display:400,700,900,400italic,700italic,900italic' rel='stylesheet' type='text/css'>
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+    <link href="https://gist-assets.github.com/assets/embed-b67021dc07195830cc157f7720b938fb.css" rel="stylesheet" type="text/css">
+    <!-- Loading front stylesheet here --> 
+    <style>
+
+#preloader {position:fixed;top:0;left:0;right:0;bottom:0;background-color:#fff; /* change if the mask should have another color then white */z-index:99; /* makes sure it stays on top */}#status {width:200px;height:200px;position:absolute;left:50%; /* centers the loading animation horizontally one the screen */top:50%; /* centers the loading animation vertically one the screen */background-image:url("img/preloader.gif"); /* path to your loading animation */background-repeat:no-repeat;background-position:center;margin:-100px 0 0 -100px; /* is width and height divided by two */}ul, ol {margin-top: 0;margin-bottom: 10px;list-style: none;}.navbar-inverse {background-color: #FFF;border-color: #FFFFFF;}</style> <link rel="stylesheet" href="/css/prettify.css"><style>header.intro-header {background: #6f5499;background: no-repeat center center;background-attachment: scroll;-webkit-background-size: cover;-moz-background-size: cover;background-size: cover;-o-background-size: cover;}/* Preloader */#preloader {position:fixed;top:0;left:0;right:0;bottom:0;background-color:#fff; /* change if the mask should have another color then white */z-index:99; /* makes sure it stays on top */}#status {width:200px;height:200px;position:absolute;left:50%; /* centers the loading animation horizontally one the screen */top:50%; /* centers the loading animation vertically one the screen */background-image:; /* path to your loading animation */background-repeat:no-repeat;background-position:center;margin:-100px 0 0 -100px; /* is width and height divided by two */} li {
+list-style: none;
+
+
+}
+            li 
+            {list-style: none;}
+            body.modal-open 
+            {overflow: hidden;padding-right: 0px;
+        }
+    </style>
+    <!-- end Loading front stylesheet here --> 
+</head>
+
+
+
+<body>
+
+	
+<div id="preloader">
+    <div id="status">
+
+    </div>
+
+</div>  
+
+    
+<!-- Navigation -->
+<nav class="navbar navbar-default navbar-custom navbar-fixed-top">
+    <div class="container-fluid">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header page-scroll">
+<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <!--
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapses-1">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button> -->
+            <a class="navbar-brand" href="/" id="blog-title-left-top">g</a>
+        </div>   
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <ul class="nav navbar-nav navbar-right">
+            <li class="dropdown">
+                <a href="#portfolioModal2" data-toggle="modal"><i class="fa fa-random" id="icon-top"></i></a>
+            <ul class="dropdown-menu"></ul>
+            </li>
+            <li><a href="https://www.github.com/Qpai/" title="github" target="_blank"><i class="social fa fa-github" id="icon-top"></i></a></li>
+            <li><a href="http://weibo.com/1669163295" title="微博" target="_blank"><i class="social fa fa-weibo" id="icon-top"></i></a></li>
+            <li><a href="/feed.xml title="rss" target="_blank"><i class="social fa fa-rss" id="icon-top"></i></a></li>
+            <li><a href="mailto:qingliangpai@126.com" title="邮件联系我" target="_blank"><i class="social fa fa-envelope" id="icon-top"></i></a></li>
+
+            <li><a href="/archive/">Archive</a></li> 
+
+             <li><a class="navbar-brand portfolio-link" href="#portfolioModal1" data-toggle="modal"><img src="/img/93TyTG3x.png" id="small-img-nav" width="40" height="40" class="img-circle" alt="newspace"></a></li>
+                    <!-- <li><a href="https://www.twitter.com/LucasGatsas" id="roundbutton" target="_blank"><i class="fa fa-twitter"></i>LucasGatsas</a></li> 
+            </ul>
+        </div> 
+        <!-- /.navbar-collapse -->
+    </div>
+    <!-- /.container -->
+</nav>
+<!-- Portfolio Modals -->
+    <div class="portfolio-modal modal fade" id="portfolioModal1" tabindex="-1" role="dialog" aria-hidden="true" style="padding-right:0px; overflow: hidden;">
+        <div class="modal-content">
+            <div class="close-modal" data-dismiss="modal">
+                <div class="lr">
+                    <div class="rl">
+                    </div>
+                </div>
+            </div>
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-8 col-lg-offset-2">
+                        <div class="modal-body">
+                            <h1 class="font-style-inline-small-h1">Qpai</h1>
+                            <hr class="star-primary">
+                            <img src="/img/Qpai_header.jpg" class="img-responsive img-centered" alt="Qpai" title="Qpai">
+                            <p class="font-style-inline-small">
+                                你好，我的名字叫李祎，我是一只码农，目前专注于iOS/客户端架构设计/Hybrid/项目管理 <br>
+                            </p>
+                            <button type="button" class="btn btn-default" data-dismiss="modal"><i class="fa fa-times"></i> Close</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+<!-- Menu Modals Add New Sa.21.Feb.2015 03:22:25 -->
+    <div class="portfolio-modal modal fade" id="portfolioModal2" tabindex="-1" role="dialog" aria-hidden="true" style="padding-right:0px; overflow: hidden;">
+        <div class="modal-content">
+            <div class="close-modal" data-dismiss="modal">
+                <div class="lr">
+                    <div class="rl">
+                    </div>
+                </div>
+            </div>
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-8 col-lg-offset-2">
+                        <div class="modal-body">
+                            <h1 class="font-style-inline-small-h1">Qpai</h1>
+                            <hr class="star-primary">
+                            <p class="font-style-inline-small">
+                        <a href="http://weibo.com/1669163295" target="_blank">follow</a>. <br> 
+                                <a href="https://www.github.com/Qpai" target="_blank">    <i class="fa fa-github" id="spaceg-social-modal"></i> </a> 
+                                <a href="http://weibo.com/1669163295" target="_blank"><i class="fa fa-twitter" id="spaceg-social-modal"></i> </a>    
+                                  <br>
+                    <li><a href="/">Home</a></li>
+                    <li><a href="/about">About Me</a></li>
+                    <li><a href="/archive/">Archive</a></li>
+                            </p>
+                      
+                            <button type="button" class="btn btn-default" data-dismiss="modal"><i class="fa fa-times"></i> Close</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+    <!-- Post Header -->
+<header class="intro-header" style="background-image: url('/img/cd-background-img.jpg')" alt="Lucas Gatsas lucas gatsas" title="lucas gatsas Lucas Gatsas">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <div class="post-heading">
+                    <h1>分析Facebook pop</h1>
+                    
+                    <h2 class="subheading">让你知道，想写一个动画框架从何入手</h2>
+                    
+                    <span class="meta">Posted by Qpai  </span>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+
+<!-- Post Content -->
+<article>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+
+				<h2 id="facebook-pop">分析Facebook pop</h2>
+
+<h3 id="pop">pop的优势</h3>
+
+<p>首先，最重要的一点就是CALayer和presentLayer的属性是一致的，而CoreAnimation是不一致的。</p>
+
+<p>其次，pop的动画是可中断式的，可中断是什么含义呢？假如CoreAnimation removeAnimation，那么运行动画的对象将回到动画开始的状态，而pop removeAnimation将停止在删除动画时，对象所在的状态，不会回到初始状态。</p>
+
+<h3 id="cadisplaylinknstimer">CADisplayLink和NSTimer的区别</h3>
+
+<p>CADisplayLink是一个允许你的程序按照屏幕刷新去重绘的同步计时器对象。CADisplayLink提供了一个selector和target对象，屏幕一刷新就会调用selector，必须把CADisplayLink加入run loop。</p>
+
+<p>屏幕的刷新频率是60HZ，所以CADisplayLink默认一秒刷新60次，当然你可以减少刷新次数，那么某些帧就会被跳过，不去调用selector。</p>
+
+<p>pop就是使用的CADisplayLink。</p>
+
+<p>NSTimer同样也是同步的，是runloop的定时源，runloop需要把NSTimer强引用，NSTimer才能启动。NSTimer的精度是50–100毫秒，但是如果错过了下一个时间点也是有可能的，所以并不精确。</p>
+
+<p>比如设置NSTimer的周期是60s，如果runloop被阻塞了，当判断是不是该调用NSTimer的时候，发现已经61s了，因为可能会碰到阻塞或者其他什么情况，这是runloop就会忽略掉这个时间点。</p>
+
+<p>CADisplayLink不属于定时源，所以runloop观察到屏幕刷新，就会调用selector，所以CADisplayLink相对精确。</p>
+
+<h3 id="pop-1">pop如何实现可中断动画</h3>
+
+<p>CADisplayerLink 在pop中的回调函数是在<code>POPAnimator</code>中的<code>- (void)render</code>，每次屏幕重绘的时候，就调用了<code>render</code>，在这个方法里面调用了</p>
+
+<pre><code>- (void)_renderTime:(CFTimeInterval)time items:(std::list&lt;POPAnimatorItemRef&gt;)items
+</code></pre>
+
+<p>以修改所有多个需要执行动画的对象，在这个方法中，使用了核心动画事务类<code>CATransaction</code>，以同时修改多个对象的属性。</p>
+
+<p>执行单个对象渲染的方法</p>
+
+<pre><code>- (void)_renderTime:(CFTimeInterval)time item:(POPAnimatorItemRef)item
+</code></pre>
+
+<p>在这个方法里面，调用了</p>
+
+<pre><code>static void applyAnimationTime(id obj, POPAnimationState *state, CFTimeInterval time)
+</code></pre>
+
+<p><code>applyAnimationTime</code>里调用传入的writeblock和readblock进行修改和读取对象frame。</p>
+
+<p>同时还执行了这段代码</p>
+
+<pre><code>if (!state-&gt;advanceTime(time, obj)) {
+	return;
+  	}
+</code></pre>
+
+<p>其中<code>advanceTime</code>方法，通过时间，刷新了当前时间应该设置的位置，或者说状态。</p>
+
+<p>这里使用了<code>CACurrentMediaTime()</code>以获取相对精确的当前时间，是mach_absolute_time()获取微妙级别的时间，再转化成秒。这个时间每次系统更新都会被重置，如果mac，会是这次开机时间到当前时间的时间差，iPhone可能同理，开机时间和当前时间的时间差。</p>
+
+<p><code>advanceTime</code>内部调用了<code>advance</code>，这是一个可以被子类重写的方法，不同类型的动画，只需要重写这个方法，加入自己类型动画如何计算下一次刷新的状态逻辑，就可以搞定。</p>
+
+<h3 id="popanimatableproperty">POPAnimatableProperty</h3>
+
+<p>这是pop的动画属性，即，里面封装了所有可变化的kvc属性，每一个属性的name，writeblock,readblock，临界值都被封装成了一个结构<code>_POPStaticAnimatablePropertyState</code></p>
+
+<p>比如frame的变化，就如下所示：</p>
+
+<pre><code> {kPOPViewFrame,
+	^(UIView *obj, CGFloat values[]) {
+  	values_from_rect(values, obj.frame);
+	},
+	^(UIView *obj, const CGFloat values[]) {
+  	obj.frame = values_to_rect(values);
+	},
+	kPOPThresholdPoint
+  	},
+</code></pre>
+
+<h3 id="pop-2">pop的新增动画类型</h3>
+
+<h4 id="popspringanimation-">PopSpringAnimation 弹簧效果</h4>
+
+<p>即对象执行这个动画的时候，会有一个晃动的效果，并且会逐渐衰减幅度</p>
+
+<p><img src="http://ww1.sinaimg.cn/mw1024/65cc0af7gw1egqpgva69rg208u0fpjtx.gif" alt="fds" /></p>
+
+<h4 id="popdecayanimation-">PopDecayAnimation 衰减动画</h4>
+
+<p>对象移动过程中，有一个缓慢到达，直到停止的效果，类似于UISrollView的拖动过程。</p>
+
+<p><img src="http://ww3.sinaimg.cn/mw1024/65cc0af7gw1egmzoapnqwg206i0bm7nn.gif" alt="" /></p>
+
+<h3 id="section">自定义动画引擎</h3>
+
+<p>大家看了这篇文章，是不是有一种貌似很简单的感觉。</p>
+
+<p>那么我们就梳理一下，pop这样的动画引擎都有那些必要部分</p>
+
+<ul>
+  <li>一个AnimationState状态类型，即我们目前支持什么属性动画，各种属性如何变化</li>
+  <li>一个全局动画单例，来接收屏幕刷新事件，并且保存需要执行动画的对象及其参数</li>
+  <li>各种动画类型，比如贝塞尔曲线类型，Spring类型，Decay类型，等，及其他们在时间变化的过程中，各参数进行变化的逻辑 </li>
+</ul>
+
+<p>最后，如何组织运行动画？</p>
+
+<p>CADisplayerLink接收屏幕刷新-》判断是否有需要执行动画的对象-》判断是什么动画，参数该根据时间怎么变？-》给对象设置新的状态</p>
+
+<p>好吧，一个动画的一帧就结束了。</p>
+
+<p>具体请参考<a href="https://github.com/cyndibaby905/CHAnimation">CHAnimation</a></p>
+
+<h3 id="section-1">参考</h3>
+
+<p><a href="http://blog.csdn.net/wzzvictory/article/details/22417181">Core Animation系列之CADisplayLink</a></p>
+
+<p><a href="https://github.com/facebook/pop">Facebook pop</a></p>
+
+<p><a href="https://github.com/rnystrom/PopDemos">RayWenderlich pop Demo</a></p>
+
+<p><a href="http://geeklu.com/2014/05/facebook-pop-usage/">facebook pop 使用指南</a></p>
+
+<p><a href="https://github.com/cyndibaby905/CHAnimation">CHAnimation</a></p>
+
+
+                <hr>
+<div class="ds-share" data-thread-key=/2014/09/17/%E5%88%86%E6%9E%90facebook_pop/  data-title=分析Facebook pop  data-content="分析Facebook pop" data-url="http://qpai.github.io/2014/09/17/%E5%88%86%E6%9E%90facebook_pop/" >
+    <div class="ds-share-inline">
+      <ul  class="ds-share-icons-16">
+        
+        <li data-toggle="ds-share-icons-more"><a class="ds-more" href="javascript:void(0);">分享到：</a></li>
+        <li><a class="ds-weibo" href="javascript:void(0);" data-service="weibo">微博</a></li>
+        <li><a class="ds-qzone" href="javascript:void(0);" data-service="qzone">QQ空间</a></li>
+        <li><a class="ds-qqt" href="javascript:void(0);" data-service="qqt">腾讯微博</a></li>
+        <li><a class="ds-wechat" href="javascript:void(0);" data-service="wechat">微信</a></li>
+        
+      </ul>
+      <div class="ds-share-icons-more">
+      </div>
+    </div>
+ </div>
+                <!-- 多说评论框 start -->
+  <div class="ds-thread" data-thread-key=/2014/09/17/%E5%88%86%E6%9E%90facebook_pop/  data-title="分析Facebook pop" data-url= "http://qpai.github.io/2014/09/17/%E5%88%86%E6%9E%90facebook_pop/"></div>
+<!-- 多说评论框 end -->
+<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+<script type="text/javascript">
+var duoshuoQuery = {short_name:"qpai"};
+  (function() {
+    var ds = document.createElement('script');
+    ds.type = 'text/javascript';ds.async = true;
+    ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+    ds.charset = 'UTF-8';
+    (document.getElementsByTagName('head')[0] 
+     || document.getElementsByTagName('body')[0]).appendChild(ds);
+  })();
+  </script>
+<!-- 多说公共JS代码 end -->
+
+                <ul class="pager">
+                    
+                    <li class="previous">
+                        <a href="/2014/09/17/debugging_in_xcode_6/" data-toggle="tooltip" data-placement="top" title="Debugging in Xcode 6">&larr; Previous Post</a>
+                    </li>
+                    
+                    
+                    <li class="next">
+                        <a href="/2014/10/06/%E5%90%84%E7%A7%8D%E9%80%9A%E4%BF%A1%E5%8D%8F%E8%AE%AE%E5%8F%8Arest%E3%80%81socket%E6%A6%82%E8%BF%B0%E6%80%BB%E7%BB%93/" data-toggle="tooltip" data-placement="top" title="各种通信协议及REST、Socket概述总结">Next Post &rarr;</a>
+                    </li>
+                    
+                </ul>
+
+            </div>
+        </div>
+    </div>
+</article>
+
+ 
+
+<hr>
+
+    <!-- Footer -->
+<footer>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <ul class="list-inline text-center">
+                    <li>
+                        <a href="/feed.xml" data-datatype="json" data-type="GET" data-target="#frame" class="reload" id="clickme">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-rss fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+                    
+                    
+                    
+                    <li>
+                        <a href="https://github.com/qingliangpai" target="_blank">
+                            <span class="fa-stack fa-lg">
+
+                              <i class="fa fa-arrow-circle-o-down"></i>
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-github fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+                    
+                      
+                </ul>
+                <p class="copyright text-muted">Copyright &copy; Qpai 2015 - 2016. <br> 2014, 2015 <br> 
+                </p>
+<div class="col-md-12">
+     <p class="copyright text-muted"> Running with
+      <!-- ICE AND FIRE THEME https://github.com/SpaceG/iceandfire -->
+    <a href="https://github.com/SpaceG/iceandfire">ICE & FIRE Theme by Lucas Gatsas.</a> Hosted on <a href="https://pages.github.com/"> Github</a></p>
+    </div>
+
+
+    
+            </div>
+        </div>
+    </div>
+
+   
+</footer>
+
+<!-- jQuery -->
+<script src="/js/jquery.min.js "></script>
+
+<script src="/js/spaceg.stylesheets.min.js"></script> 
+
+<script src="/js/bootstrap.min.js "></script>
+
+
+
+
+<script type="text/javascript">
+  //<![CDATA[
+    $(window).load(function() { // makes sure the whole site is loaded
+      $('#status').fadeOut(); // will first fade out the loading animation
+      $('#preloader').delay(150).fadeOut('fast'); // will fade out the white DIV that covers the website.
+      $('body').delay(100).css({'overflow':'visible'});
+    })
+  //]]>
+</script> 
+
+<script>
+  !function ($) {
+    $(function(){
+      window.prettyPrint && prettyPrint()
+    })
+  }(window.jQuery)
+</script>
+ 
+
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-53988504-1', 'auto');
+  ga('send', 'pageview');
+
+</script> 
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-63212709-1', 'auto');
+  ga('send', 'pageview');
+
+</script>
+
+
+
+    
+
+</body>
+
+</html>

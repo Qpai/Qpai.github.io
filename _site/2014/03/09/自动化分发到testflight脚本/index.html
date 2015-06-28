@@ -1,0 +1,574 @@
+<!DOCTYPE html>
+<html lang="en">
+
+
+
+<head>
+ <!-- 
+      loads the http over https ssl - 
+      welcome to my website! 
+      follow me at my twitter  
+      https://www.twitter.com/LucasGatsas
+      www.lucasgatsas.ch - switzerland. 
+
+                                                    --> 
+
+ <!-- here my e-mail to contact me lucasgatsas@gmail.com --> 
+<!--
+<script type="text/javascript">
+var host = "https://lucasgatsas.ch/";
+if ((host == window.location.host) && (window.location.protocol != "https:"))
+    window.location.protocol = "https";
+</script>
+-->
+<!-- Microsoft Internet Explorer documentMode compatMode setting IE Modus --> 
+<script type="text/javascript">
+var IE = null;
+if (window.navigator.appName == "Microsoft Internet Explorer") {
+  if (document.documentMode) {
+  
+    IE = document.documentMode; 
+    } else {
+   
+        IE = 5; 
+          if (document.compatMode) {
+      if (document.compatMode == "CSS1Compat")
+      IE = 11; 
+      }
+    }
+  }
+</script>
+
+    <meta charset="utf-8">
+    <!-- X-UA --> 
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta http-equiv="X-UA-Compatible" content="IE=11"/>
+    <link rel="author" title="Lucas Gatsas" href="https://plus.google.com/101826267816845608605/posts"/>
+
+
+ <meta name="google-site-verification" content="F5lkHug5Hdw4XRPcwJuQsK01auhET-yWy1o5SrCM-Sw" />
+
+    <meta name="google" content="notranslate" />
+    <!-- Viewport --> 
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- index ROBOTS follow --> 
+    <meta name="robots"    content="index, follow" />
+    <!-- Site Desciption --> 
+    <meta name="description" content="你好，我的名字叫李祎，我是一只码农，目前专注于iOS/客户端架构设计/Hybrid/项目管理">
+        <!-- Site Desciption --> 
+    <meta name="keywords" content="Qpai,李祎,iOS,Hybrid">
+    <!-- Favicon --> 
+    <link rel="shortcut icon" href="/img/favicon-7326478236.png" type="image/x-icon" />
+    <!-- Blog Title -->
+    <title>李祎 - 北京的一只码农 </title>
+
+    <!--     <title>自动化分发到testflight脚本 - Qpai</title>
+--> 
+    <!-- Property Metas --> 
+    <meta property="og:image" content="/img/93TyTG3x.png"/>
+    <meta property="og:title" content="你好，我的名字叫李祎，我是一只码农，目前专注于iOS/客户端架构设计/Hybrid/项目管理"/>
+    <meta property="og:site_name" content="你好，我的名字叫李祎，我是一只码农，目前专注于iOS/客户端架构设计/Hybrid/项目管理"/>
+    <!-- Canonical -->
+    <link rel="canonical" href="http://qpai.github.io/2014/03/09/%E8%87%AA%E5%8A%A8%E5%8C%96%E5%88%86%E5%8F%91%E5%88%B0testflight%E8%84%9A%E6%9C%AC/">
+    <!-- StyleSheet -->
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/css/spaceg.stylesheets.css">
+    <!-- Fonts -->
+    <link href='https://fonts.googleapis.com/css?family=Merriweather:400,300,300italic,400italic,700,700italic,900,900italic' rel='stylesheet' type='text/css'>
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link href='https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Playfair+Display:400,700,900,400italic,700italic,900italic' rel='stylesheet' type='text/css'>
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+    <link href="https://gist-assets.github.com/assets/embed-b67021dc07195830cc157f7720b938fb.css" rel="stylesheet" type="text/css">
+    <!-- Loading front stylesheet here --> 
+    <style>
+
+#preloader {position:fixed;top:0;left:0;right:0;bottom:0;background-color:#fff; /* change if the mask should have another color then white */z-index:99; /* makes sure it stays on top */}#status {width:200px;height:200px;position:absolute;left:50%; /* centers the loading animation horizontally one the screen */top:50%; /* centers the loading animation vertically one the screen */background-image:url("img/preloader.gif"); /* path to your loading animation */background-repeat:no-repeat;background-position:center;margin:-100px 0 0 -100px; /* is width and height divided by two */}ul, ol {margin-top: 0;margin-bottom: 10px;list-style: none;}.navbar-inverse {background-color: #FFF;border-color: #FFFFFF;}</style> <link rel="stylesheet" href="/css/prettify.css"><style>header.intro-header {background: #6f5499;background: no-repeat center center;background-attachment: scroll;-webkit-background-size: cover;-moz-background-size: cover;background-size: cover;-o-background-size: cover;}/* Preloader */#preloader {position:fixed;top:0;left:0;right:0;bottom:0;background-color:#fff; /* change if the mask should have another color then white */z-index:99; /* makes sure it stays on top */}#status {width:200px;height:200px;position:absolute;left:50%; /* centers the loading animation horizontally one the screen */top:50%; /* centers the loading animation vertically one the screen */background-image:; /* path to your loading animation */background-repeat:no-repeat;background-position:center;margin:-100px 0 0 -100px; /* is width and height divided by two */} li {
+list-style: none;
+
+
+}
+            li 
+            {list-style: none;}
+            body.modal-open 
+            {overflow: hidden;padding-right: 0px;
+        }
+    </style>
+    <!-- end Loading front stylesheet here --> 
+</head>
+
+
+
+<body>
+
+	
+<div id="preloader">
+    <div id="status">
+
+    </div>
+
+</div>  
+
+    
+<!-- Navigation -->
+<nav class="navbar navbar-default navbar-custom navbar-fixed-top">
+    <div class="container-fluid">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header page-scroll">
+<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <!--
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapses-1">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button> -->
+            <a class="navbar-brand" href="/" id="blog-title-left-top">g</a>
+        </div>   
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <ul class="nav navbar-nav navbar-right">
+            <li class="dropdown">
+                <a href="#portfolioModal2" data-toggle="modal"><i class="fa fa-random" id="icon-top"></i></a>
+            <ul class="dropdown-menu"></ul>
+            </li>
+            <li><a href="https://www.github.com/Qpai/" title="github" target="_blank"><i class="social fa fa-github" id="icon-top"></i></a></li>
+            <li><a href="http://weibo.com/1669163295" title="微博" target="_blank"><i class="social fa fa-weibo" id="icon-top"></i></a></li>
+            <li><a href="/feed.xml title="rss" target="_blank"><i class="social fa fa-rss" id="icon-top"></i></a></li>
+            <li><a href="mailto:qingliangpai@126.com" title="邮件联系我" target="_blank"><i class="social fa fa-envelope" id="icon-top"></i></a></li>
+
+            <li><a href="/archive/">Archive</a></li> 
+
+             <li><a class="navbar-brand portfolio-link" href="#portfolioModal1" data-toggle="modal"><img src="/img/93TyTG3x.png" id="small-img-nav" width="40" height="40" class="img-circle" alt="newspace"></a></li>
+                    <!-- <li><a href="https://www.twitter.com/LucasGatsas" id="roundbutton" target="_blank"><i class="fa fa-twitter"></i>LucasGatsas</a></li> 
+            </ul>
+        </div> 
+        <!-- /.navbar-collapse -->
+    </div>
+    <!-- /.container -->
+</nav>
+<!-- Portfolio Modals -->
+    <div class="portfolio-modal modal fade" id="portfolioModal1" tabindex="-1" role="dialog" aria-hidden="true" style="padding-right:0px; overflow: hidden;">
+        <div class="modal-content">
+            <div class="close-modal" data-dismiss="modal">
+                <div class="lr">
+                    <div class="rl">
+                    </div>
+                </div>
+            </div>
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-8 col-lg-offset-2">
+                        <div class="modal-body">
+                            <h1 class="font-style-inline-small-h1">Qpai</h1>
+                            <hr class="star-primary">
+                            <img src="/img/Qpai_header.jpg" class="img-responsive img-centered" alt="Qpai" title="Qpai">
+                            <p class="font-style-inline-small">
+                                你好，我的名字叫李祎，我是一只码农，目前专注于iOS/客户端架构设计/Hybrid/项目管理 <br>
+                            </p>
+                            <button type="button" class="btn btn-default" data-dismiss="modal"><i class="fa fa-times"></i> Close</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+<!-- Menu Modals Add New Sa.21.Feb.2015 03:22:25 -->
+    <div class="portfolio-modal modal fade" id="portfolioModal2" tabindex="-1" role="dialog" aria-hidden="true" style="padding-right:0px; overflow: hidden;">
+        <div class="modal-content">
+            <div class="close-modal" data-dismiss="modal">
+                <div class="lr">
+                    <div class="rl">
+                    </div>
+                </div>
+            </div>
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-8 col-lg-offset-2">
+                        <div class="modal-body">
+                            <h1 class="font-style-inline-small-h1">Qpai</h1>
+                            <hr class="star-primary">
+                            <p class="font-style-inline-small">
+                        <a href="http://weibo.com/1669163295" target="_blank">follow</a>. <br> 
+                                <a href="https://www.github.com/Qpai" target="_blank">    <i class="fa fa-github" id="spaceg-social-modal"></i> </a> 
+                                <a href="http://weibo.com/1669163295" target="_blank"><i class="fa fa-twitter" id="spaceg-social-modal"></i> </a>    
+                                  <br>
+                    <li><a href="/">Home</a></li>
+                    <li><a href="/about">About Me</a></li>
+                    <li><a href="/archive/">Archive</a></li>
+                            </p>
+                      
+                            <button type="button" class="btn btn-default" data-dismiss="modal"><i class="fa fa-times"></i> Close</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+    <!-- Post Header -->
+<header class="intro-header" style="background-image: url('/img/cd-background-img.jpg')" alt="Lucas Gatsas lucas gatsas" title="lucas gatsas Lucas Gatsas">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <div class="post-heading">
+                    <h1>自动化分发到testflight脚本</h1>
+                    
+                    <h2 class="subheading">学习命令行和shell流水账</h2>
+                    
+                    <span class="meta">Posted by Qpai  </span>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+
+<!-- Post Content -->
+<article>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+
+				<p>最近公司项目有一些分发的需求，所以我搜索了一些资料，实现了自动打包并且上传到testflight的脚本。</p>
+
+<p>大概需求有这些</p>
+
+<ol>
+  <li>将版本号和用户名显示在图标上面</li>
+  <li>Archive一个HOC的包</li>
+  <li>本地备份一个ipa和dsym文件</li>
+  <li>上传至Testflight</li>
+</ol>
+
+<h2 id="section">一、图标显示版本号</h2>
+<ol>
+  <li>
+    <p>安装两个shell工具</p>
+
+    <pre><code> brew install imagemagick  
+ brew install ghostscript
+</code></pre>
+  </li>
+  <li>
+    <p>在Build Phases，新建一个Run Script。</p>
+
+    <pre><code>    #这里可以讲版本号设置成SVN或者git的版本号，以防冲突  #/usr/libexec/PlistBuddy -c "Set :CFBundleVersion ${SVN_REVISION}""$INFO_PLIST_PATH"  version=`/usr/libexec/PlistBuddy -c "Print CFBundleVersion" "${INFOPLIST_FILE}"`
+</code></pre>
+
+    <p>function processIcon() {
+     export PATH=$PATH:/usr/local/bin
+     base_file=$1
+     base_path=<code>find "${SRCROOT}/&lt;project name&gt;" -name $base_file</code></p>
+
+    <pre><code> echo "Processing 43 $base_path"
+    
+ if [[ ! -f ${base_path} || -z ${base_path} ]]; then
+ return;
+ fi
+    
+ echo " 11 ${target_path}"
+    
+ target_file=$base_file
+ target_path="${CONFIGURATION_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/${target_file}"
+    
+    
+    
+ if [ $CONFIGURATION = "Release" ]; then
+ cp "${base_path}" "$target_path"
+ return
+ fi
+    
+ width=`identify -format %w "${base_path}"`
+    
+ convert -background '#0008' -fill white -gravity center -size ${width}x40\
+ caption:"${version} ${LOGNAME}"\
+ "${base_path}" +swap -gravity south -composite "${target_path}"
+    
+ echo "Overlayed ${target_path}"  }
+</code></pre>
+
+    <p>processIcon “Icon_base.png”
+ processIcon “Icon_base@2x.png”</p>
+  </li>
+</ol>
+
+<ul>
+  <li>这里只涉及到了Icon.png和Icon@2x.png的图标，还可以增加更多。  </li>
+  <li>处理了release的配置，如果发布状态，则不显示版本号，可以根据需求修改。  </li>
+  <li>脚本编辑框下面有一个选项：Show environment variables in build   log。如果勾上，那你的log就会出现一堆本地的环境变量及其值，你可以打印出来，写脚本的时候就知道哪些是可以用的环境变量。但是如果调试shell脚本的时候最好不勾上，因为很多，而log最多显示200行，你shell的log可能会被隐藏掉，影响你的调试。  </li>
+</ul>
+
+<h2 id="section-1">二、自动打包和上传。</h2>
+<p>在xcode左上角找到edit schame，然后找到左边有Archive，点击旁边的三角，在post-actions增加一个run script。因为需要archive之后，才能找到相应的xcarchive文件，所以是后置运行脚本。</p>
+
+<p>shell脚本如下：
+    #!/bin/sh</p>
+
+<pre><code>#  Script.sh
+#  IconOverlaying
+#
+#  Created by Li Yi on 14-3-9.
+#  Copyright (c) 2014年 pixle. All rights reserved.
+
+
+# define vars
+TESTFLIGHT_TEAM_TOKEN="&lt;team token&gt;"
+TESTFLIGHT_API_TOKEN="&lt;user token&gt;"
+TESTFLIGHT_DISTRIBUTION_LIST="QpaiTeam"
+BACK_UP_PATH="${SOURCE_ROOT}/IpaBackup"
+
+
+
+echo "find last Archives"
+newest=
+backIFS=$IFS
+IFS=$(echo -en '\n\b')
+for f in `find ~/Library/Developer/Xcode/Archives -name *.xcarchive`
+do
+if [ -z $newest ]
+then
+newest=$f
+elif [ $f -nt $newest ]
+then
+newest=$f
+fi
+done
+echo "${f}"
+FS=$backIFS
+
+LASTARCHIVE_PATH=$f
+
+# it's build version,or git version or svn version
+VERSION=`/usr/libexec/PlistBuddy -c "Print CFBundleVersion" "${INFOPLIST_FILE}"`
+
+IPA_PATH="${BACK_UP_PATH}/${VERSION}.ipa"
+DSYM_PATH="${LASTARCHIVE_PATH}/dSYMs/${PROJECT_NAME}.app.dSYM"
+COPY_DSYM_PATH="${BACK_UP_PATH}/${VERSION}.app.dSYM"
+
+# create backup folder
+mkdir -p "${BACK_UP_PATH}"
+
+rm "${IPA_PATH}"
+
+echo "create ipa from archive"
+
+xcodebuild -exportArchive -exportFormat IPA -archivePath "${LASTARCHIVE_PATH}" -exportPath "${IPA_PATH}"
+
+echo "copy dsym to back-up"
+cp -r "${DSYM_PATH}" "${COPY_DSYM_PATH}"
+
+
+#zipping the .dSYM to send to Testflight
+echo "Generating dsym zip file"
+/usr/bin/zip -r "${COPY_DSYM_PATH}.zip""${COPY_DSYM_PATH}"
+
+# sends the .ipa file to TestFlight
+
+
+
+
+echo "Sending to TestFlight"
+curl http://testflightapp.com/api/builds.json -F file="@${IPA_PATH}" \
+-F dsym="@${COPY_DSYM_PATH}.zip" \
+-F api_token="${TESTFLIGHT_API_TOKEN}" \
+-F team_token="${TESTFLIGHT_TEAM_TOKEN}" \
+-F notes="This build was uploaded via the upload API" \
+-F notify=False \
+-F distribution_lists="${TESTFLIGHT_DISTRIBUTION_LIST}"
+echo Submission ended
+</code></pre>
+
+<h3 id="section-2">执行了如下功能：</h3>
+
+<ol>
+  <li>寻找最后一个archive</li>
+  <li>生成一个本地备份的文件夹</li>
+  <li>通过最后一个archive生成一个以build版本号命名的ipa，并且保存于备份文件夹中。</li>
+  <li>把最后一个archive的dsym文件复制到备份文件中，并且重命名为版本号。</li>
+  <li>把dsym文件打包成zip</li>
+  <li>通过curl将ipa和dysm上传到testflight</li>
+</ol>
+
+<h3 id="section-3">解释一些需要设置的变量名含义：</h3>
+
+<ol>
+  <li>TESTFLIGHT_TEAM_TOKEN就是你Testflight里面team的token</li>
+  <li>TESTFLIGHT_API_TOKEN是你用户的token</li>
+  <li>TESTFLIGHT_DISTRIBUTION_LIST是你的包分发的目标受众，可以是team名，也可以是用户名，用逗号隔开。</li>
+</ol>
+
+<p>注意： 最下面的curl就是上传到testflight的接口，和传参。具体是不是上传正确了，需要看log。</p>
+
+
+                <hr>
+<div class="ds-share" data-thread-key=/2014/03/09/%E8%87%AA%E5%8A%A8%E5%8C%96%E5%88%86%E5%8F%91%E5%88%B0testflight%E8%84%9A%E6%9C%AC/  data-title=自动化分发到testflight脚本  data-content="自动化分发到testflight脚本" data-url="http://qpai.github.io/2014/03/09/%E8%87%AA%E5%8A%A8%E5%8C%96%E5%88%86%E5%8F%91%E5%88%B0testflight%E8%84%9A%E6%9C%AC/" >
+    <div class="ds-share-inline">
+      <ul  class="ds-share-icons-16">
+        
+        <li data-toggle="ds-share-icons-more"><a class="ds-more" href="javascript:void(0);">分享到：</a></li>
+        <li><a class="ds-weibo" href="javascript:void(0);" data-service="weibo">微博</a></li>
+        <li><a class="ds-qzone" href="javascript:void(0);" data-service="qzone">QQ空间</a></li>
+        <li><a class="ds-qqt" href="javascript:void(0);" data-service="qqt">腾讯微博</a></li>
+        <li><a class="ds-wechat" href="javascript:void(0);" data-service="wechat">微信</a></li>
+        
+      </ul>
+      <div class="ds-share-icons-more">
+      </div>
+    </div>
+ </div>
+                <!-- 多说评论框 start -->
+  <div class="ds-thread" data-thread-key=/2014/03/09/%E8%87%AA%E5%8A%A8%E5%8C%96%E5%88%86%E5%8F%91%E5%88%B0testflight%E8%84%9A%E6%9C%AC/  data-title="自动化分发到testflight脚本" data-url= "http://qpai.github.io/2014/03/09/%E8%87%AA%E5%8A%A8%E5%8C%96%E5%88%86%E5%8F%91%E5%88%B0testflight%E8%84%9A%E6%9C%AC/"></div>
+<!-- 多说评论框 end -->
+<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+<script type="text/javascript">
+var duoshuoQuery = {short_name:"qpai"};
+  (function() {
+    var ds = document.createElement('script');
+    ds.type = 'text/javascript';ds.async = true;
+    ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+    ds.charset = 'UTF-8';
+    (document.getElementsByTagName('head')[0] 
+     || document.getElementsByTagName('body')[0]).appendChild(ds);
+  })();
+  </script>
+<!-- 多说公共JS代码 end -->
+
+                <ul class="pager">
+                    
+                    <li class="previous">
+                        <a href="/2014/03/03/DyCI%E5%8A%A8%E6%80%81%E6%B3%A8%E5%85%A5%E5%AE%9E%E8%B7%B5/" data-toggle="tooltip" data-placement="top" title="Dyci动态注入实践">&larr; Previous Post</a>
+                    </li>
+                    
+                    
+                    <li class="next">
+                        <a href="/2014/06/11/cocoapod%E4%BD%BF%E7%94%A8%E6%96%87%E6%A1%A3/" data-toggle="tooltip" data-placement="top" title="Cocoapods使用文档">Next Post &rarr;</a>
+                    </li>
+                    
+                </ul>
+
+            </div>
+        </div>
+    </div>
+</article>
+
+ 
+
+<hr>
+
+    <!-- Footer -->
+<footer>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <ul class="list-inline text-center">
+                    <li>
+                        <a href="/feed.xml" data-datatype="json" data-type="GET" data-target="#frame" class="reload" id="clickme">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-rss fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+                    
+                    
+                    
+                    <li>
+                        <a href="https://github.com/qingliangpai" target="_blank">
+                            <span class="fa-stack fa-lg">
+
+                              <i class="fa fa-arrow-circle-o-down"></i>
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-github fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+                    
+                      
+                </ul>
+                <p class="copyright text-muted">Copyright &copy; Qpai 2015 - 2016. <br> 2014, 2015 <br> 
+                </p>
+<div class="col-md-12">
+     <p class="copyright text-muted"> Running with
+      <!-- ICE AND FIRE THEME https://github.com/SpaceG/iceandfire -->
+    <a href="https://github.com/SpaceG/iceandfire">ICE & FIRE Theme by Lucas Gatsas.</a> Hosted on <a href="https://pages.github.com/"> Github</a></p>
+    </div>
+
+
+    
+            </div>
+        </div>
+    </div>
+
+   
+</footer>
+
+<!-- jQuery -->
+<script src="/js/jquery.min.js "></script>
+
+<script src="/js/spaceg.stylesheets.min.js"></script> 
+
+<script src="/js/bootstrap.min.js "></script>
+
+
+
+
+<script type="text/javascript">
+  //<![CDATA[
+    $(window).load(function() { // makes sure the whole site is loaded
+      $('#status').fadeOut(); // will first fade out the loading animation
+      $('#preloader').delay(150).fadeOut('fast'); // will fade out the white DIV that covers the website.
+      $('body').delay(100).css({'overflow':'visible'});
+    })
+  //]]>
+</script> 
+
+<script>
+  !function ($) {
+    $(function(){
+      window.prettyPrint && prettyPrint()
+    })
+  }(window.jQuery)
+</script>
+ 
+
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-53988504-1', 'auto');
+  ga('send', 'pageview');
+
+</script> 
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-63212709-1', 'auto');
+  ga('send', 'pageview');
+
+</script>
+
+
+
+    
+
+</body>
+
+</html>

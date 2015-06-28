@@ -1,0 +1,516 @@
+<!DOCTYPE html>
+<html lang="en">
+
+
+
+<head>
+ <!-- 
+      loads the http over https ssl - 
+      welcome to my website! 
+      follow me at my twitter  
+      https://www.twitter.com/LucasGatsas
+      www.lucasgatsas.ch - switzerland. 
+
+                                                    --> 
+
+ <!-- here my e-mail to contact me lucasgatsas@gmail.com --> 
+<!--
+<script type="text/javascript">
+var host = "https://lucasgatsas.ch/";
+if ((host == window.location.host) && (window.location.protocol != "https:"))
+    window.location.protocol = "https";
+</script>
+-->
+<!-- Microsoft Internet Explorer documentMode compatMode setting IE Modus --> 
+<script type="text/javascript">
+var IE = null;
+if (window.navigator.appName == "Microsoft Internet Explorer") {
+  if (document.documentMode) {
+  
+    IE = document.documentMode; 
+    } else {
+   
+        IE = 5; 
+          if (document.compatMode) {
+      if (document.compatMode == "CSS1Compat")
+      IE = 11; 
+      }
+    }
+  }
+</script>
+
+    <meta charset="utf-8">
+    <!-- X-UA --> 
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta http-equiv="X-UA-Compatible" content="IE=11"/>
+    <link rel="author" title="Lucas Gatsas" href="https://plus.google.com/101826267816845608605/posts"/>
+
+
+ <meta name="google-site-verification" content="F5lkHug5Hdw4XRPcwJuQsK01auhET-yWy1o5SrCM-Sw" />
+
+    <meta name="google" content="notranslate" />
+    <!-- Viewport --> 
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- index ROBOTS follow --> 
+    <meta name="robots"    content="index, follow" />
+    <!-- Site Desciption --> 
+    <meta name="description" content="你好，我的名字叫李祎，我是一只码农，目前专注于iOS/客户端架构设计/Hybrid/项目管理">
+        <!-- Site Desciption --> 
+    <meta name="keywords" content="Qpai,李祎,iOS,Hybrid">
+    <!-- Favicon --> 
+    <link rel="shortcut icon" href="/img/favicon-7326478236.png" type="image/x-icon" />
+    <!-- Blog Title -->
+    <title>李祎 - 北京的一只码农 </title>
+
+    <!--     <title>cocoapods实践记 - Qpai</title>
+--> 
+    <!-- Property Metas --> 
+    <meta property="og:image" content="/img/93TyTG3x.png"/>
+    <meta property="og:title" content="你好，我的名字叫李祎，我是一只码农，目前专注于iOS/客户端架构设计/Hybrid/项目管理"/>
+    <meta property="og:site_name" content="你好，我的名字叫李祎，我是一只码农，目前专注于iOS/客户端架构设计/Hybrid/项目管理"/>
+    <!-- Canonical -->
+    <link rel="canonical" href="http://qpai.github.io/2014/07/20/cocoapods%E5%AE%9E%E8%B7%B5%E8%AE%B0/">
+    <!-- StyleSheet -->
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/css/spaceg.stylesheets.css">
+    <!-- Fonts -->
+    <link href='https://fonts.googleapis.com/css?family=Merriweather:400,300,300italic,400italic,700,700italic,900,900italic' rel='stylesheet' type='text/css'>
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link href='https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Playfair+Display:400,700,900,400italic,700italic,900italic' rel='stylesheet' type='text/css'>
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+    <link href="https://gist-assets.github.com/assets/embed-b67021dc07195830cc157f7720b938fb.css" rel="stylesheet" type="text/css">
+    <!-- Loading front stylesheet here --> 
+    <style>
+
+#preloader {position:fixed;top:0;left:0;right:0;bottom:0;background-color:#fff; /* change if the mask should have another color then white */z-index:99; /* makes sure it stays on top */}#status {width:200px;height:200px;position:absolute;left:50%; /* centers the loading animation horizontally one the screen */top:50%; /* centers the loading animation vertically one the screen */background-image:url("img/preloader.gif"); /* path to your loading animation */background-repeat:no-repeat;background-position:center;margin:-100px 0 0 -100px; /* is width and height divided by two */}ul, ol {margin-top: 0;margin-bottom: 10px;list-style: none;}.navbar-inverse {background-color: #FFF;border-color: #FFFFFF;}</style> <link rel="stylesheet" href="/css/prettify.css"><style>header.intro-header {background: #6f5499;background: no-repeat center center;background-attachment: scroll;-webkit-background-size: cover;-moz-background-size: cover;background-size: cover;-o-background-size: cover;}/* Preloader */#preloader {position:fixed;top:0;left:0;right:0;bottom:0;background-color:#fff; /* change if the mask should have another color then white */z-index:99; /* makes sure it stays on top */}#status {width:200px;height:200px;position:absolute;left:50%; /* centers the loading animation horizontally one the screen */top:50%; /* centers the loading animation vertically one the screen */background-image:; /* path to your loading animation */background-repeat:no-repeat;background-position:center;margin:-100px 0 0 -100px; /* is width and height divided by two */} li {
+list-style: none;
+
+
+}
+            li 
+            {list-style: none;}
+            body.modal-open 
+            {overflow: hidden;padding-right: 0px;
+        }
+    </style>
+    <!-- end Loading front stylesheet here --> 
+</head>
+
+
+
+<body>
+
+	
+<div id="preloader">
+    <div id="status">
+
+    </div>
+
+</div>  
+
+    
+<!-- Navigation -->
+<nav class="navbar navbar-default navbar-custom navbar-fixed-top">
+    <div class="container-fluid">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header page-scroll">
+<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <!--
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapses-1">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button> -->
+            <a class="navbar-brand" href="/" id="blog-title-left-top">g</a>
+        </div>   
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <ul class="nav navbar-nav navbar-right">
+            <li class="dropdown">
+                <a href="#portfolioModal2" data-toggle="modal"><i class="fa fa-random" id="icon-top"></i></a>
+            <ul class="dropdown-menu"></ul>
+            </li>
+            <li><a href="https://www.github.com/Qpai/" title="github" target="_blank"><i class="social fa fa-github" id="icon-top"></i></a></li>
+            <li><a href="http://weibo.com/1669163295" title="微博" target="_blank"><i class="social fa fa-weibo" id="icon-top"></i></a></li>
+            <li><a href="/feed.xml title="rss" target="_blank"><i class="social fa fa-rss" id="icon-top"></i></a></li>
+            <li><a href="mailto:qingliangpai@126.com" title="邮件联系我" target="_blank"><i class="social fa fa-envelope" id="icon-top"></i></a></li>
+
+            <li><a href="/archive/">Archive</a></li> 
+
+             <li><a class="navbar-brand portfolio-link" href="#portfolioModal1" data-toggle="modal"><img src="/img/93TyTG3x.png" id="small-img-nav" width="40" height="40" class="img-circle" alt="newspace"></a></li>
+                    <!-- <li><a href="https://www.twitter.com/LucasGatsas" id="roundbutton" target="_blank"><i class="fa fa-twitter"></i>LucasGatsas</a></li> 
+            </ul>
+        </div> 
+        <!-- /.navbar-collapse -->
+    </div>
+    <!-- /.container -->
+</nav>
+<!-- Portfolio Modals -->
+    <div class="portfolio-modal modal fade" id="portfolioModal1" tabindex="-1" role="dialog" aria-hidden="true" style="padding-right:0px; overflow: hidden;">
+        <div class="modal-content">
+            <div class="close-modal" data-dismiss="modal">
+                <div class="lr">
+                    <div class="rl">
+                    </div>
+                </div>
+            </div>
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-8 col-lg-offset-2">
+                        <div class="modal-body">
+                            <h1 class="font-style-inline-small-h1">Qpai</h1>
+                            <hr class="star-primary">
+                            <img src="/img/Qpai_header.jpg" class="img-responsive img-centered" alt="Qpai" title="Qpai">
+                            <p class="font-style-inline-small">
+                                你好，我的名字叫李祎，我是一只码农，目前专注于iOS/客户端架构设计/Hybrid/项目管理 <br>
+                            </p>
+                            <button type="button" class="btn btn-default" data-dismiss="modal"><i class="fa fa-times"></i> Close</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+<!-- Menu Modals Add New Sa.21.Feb.2015 03:22:25 -->
+    <div class="portfolio-modal modal fade" id="portfolioModal2" tabindex="-1" role="dialog" aria-hidden="true" style="padding-right:0px; overflow: hidden;">
+        <div class="modal-content">
+            <div class="close-modal" data-dismiss="modal">
+                <div class="lr">
+                    <div class="rl">
+                    </div>
+                </div>
+            </div>
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-8 col-lg-offset-2">
+                        <div class="modal-body">
+                            <h1 class="font-style-inline-small-h1">Qpai</h1>
+                            <hr class="star-primary">
+                            <p class="font-style-inline-small">
+                        <a href="http://weibo.com/1669163295" target="_blank">follow</a>. <br> 
+                                <a href="https://www.github.com/Qpai" target="_blank">    <i class="fa fa-github" id="spaceg-social-modal"></i> </a> 
+                                <a href="http://weibo.com/1669163295" target="_blank"><i class="fa fa-twitter" id="spaceg-social-modal"></i> </a>    
+                                  <br>
+                    <li><a href="/">Home</a></li>
+                    <li><a href="/about">About Me</a></li>
+                    <li><a href="/archive/">Archive</a></li>
+                            </p>
+                      
+                            <button type="button" class="btn btn-default" data-dismiss="modal"><i class="fa fa-times"></i> Close</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+    <!-- Post Header -->
+<header class="intro-header" style="background-image: url('/img/cd-background-img.jpg')" alt="Lucas Gatsas lucas gatsas" title="lucas gatsas Lucas Gatsas">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <div class="post-heading">
+                    <h1>cocoapods实践记</h1>
+                    
+                    <h2 class="subheading">cocoapods进阶</h2>
+                    
+                    <span class="meta">Posted by Qpai  </span>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+
+<!-- Post Content -->
+<article>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+
+				<h1 id="cocoapods">cocoapods实践记</h1>
+
+<h2 id="section">背景</h2>
+
+<p>公司有一个主客户端包含了很多频道的业务，若干个频道的app客户端，经常需要频道客户端的代码和主客户端的代码进行相互copy to each other。</p>
+
+<p>这样的问题在于，代码会被随意更改，不可复用，无法升级，工作量分散，</p>
+
+<p>所以我主张使用<code>cocoapods</code>进行组件管理，当然有同学推荐我使用<a href="http://schacon.github.io/git/user-manual.html#submodules">git submodule</a> 进行管理。</p>
+
+<p>公司这时有了一个新组件:X，主客户端和频道子app客户端都需要用到，我想，这是一个彻底改变项目开发问题的机会。</p>
+
+<h2 id="cocoapods-1">cocoapods介绍</h2>
+
+<p>其实不用我介绍，大多数iOS开发者都知道cocoapods。</p>
+
+<p>我们为了避免重复造轮子，经常会使用第三方库，而iOS的项目开发，如果引入第三方库，需要进行很多项目的配置，以前我们只能人肉手动去修改项目文件，现在有了cocoapods，帮助我们以最快的速度将第三方库导入我们项目中，只需一个命令行<code>pod install</code></p>
+
+<h2 id="section-1">真假美猴王</h2>
+
+<p>首先我开始对各个项目进行调研，马上问题出来了：</p>
+
+<ol>
+  <li>公司的各个应用中存在相同的第三方库，但是版本不一样。</li>
+  <li>很多第三方库被改动了</li>
+  <li>各个项目中存在相同名称的类，但是功能不一样</li>
+</ol>
+
+<p>比如Afnetworking，各个项目使用的是不同的版本，而且被改动了。有项目以前用的是老版本，但是后来看到了升级版本，手动加入了一部分升级功能，还不完全。</p>
+
+<p>经过了一些讨论，我们进行了如下工作，来减少项目代码冲突</p>
+
+<ol>
+  <li>对于相同的第三方库，各个项目进行版本调研，查找出项目的原始版本，和目前项目中使用的版本，有何不同，使用categroy等方式进行抽离，保证第三方库的完整和干净。2. </li>
+  <li>各个项目尽量使用相同版本的第三方库，各个项目同时进行升级</li>
+  <li>同时，各个项目的代码文件，必须添加前缀，避免类名冲突。</li>
+</ol>
+
+<h2 id="cocoapods-2">cocoapods私有库</h2>
+
+<p>为了将新项目X使用cocoapods进行集成，我们在内部的git库中建立了私有的specs库</p>
+
+<p>按照<a href="http://guides.cocoapods.org/making/private-cocoapods.html">cocoapods private</a>教程的介绍，我们进行建立。</p>
+
+<p>其实github上面的<a href="https://github.com/CocoaPods/Specs/">CocoaPods/Specs</a>是cocoapods的公共配置库，如果想建立自己的私有配置库，只需要在自己的git服务器上面建一个项目，比如叫DemoSpecs。内容呢，就遵循如下路径：</p>
+
+<pre><code>├── Specs
+	└── [自定义库名]
+    	└── [版本号]
+        	└── [自定义库名].podspec
+</code></pre>
+
+<p>这样，私有库就建成了，每当我们需要加入一个私有新库的时候，只需要在Specs中增加一个文件夹，命名为<code>自定义库名</code>，在其中放入不同版本的配置文件即可。</p>
+
+<p>当然这个时候，使用<code>pod search customPod</code>还是搜不到东西的，你需要把这个DemoSPecs克隆到本地去。</p>
+
+<p>打开终端，输入以下命令</p>
+
+<pre><code>pod repo add REPO_NAME SOURCE_URL
+</code></pre>
+
+<p>其中REPO_NAME 是你本地的specs库名，这个可以自定义。而SOURCE_URL是DemoSpecs的git地址。</p>
+
+<p>这时候使用<code>pod search customPod</code>就能搜到你私有cocoapod的库了。</p>
+
+<h2 id="section-2">单体双胞胎</h2>
+
+<p>我们在开发新组件X的的过程中，使用了以前的老代码，而新组件的这部分老代码使用的是MRC，而新代码使用了ARC，这是复杂呀。那么如何在配置文件中，对这两部分代码进行区分呢？</p>
+
+<p>podspecs文件中是可以配置<code>subspec</code>的，我将两部分代码进行了拆分，幸运的时候两部分代码一部分是数据处理，一部分是UI，那么我建立了两个文件夹分别存放这两部分代码，同时在podSpecs中配置了子<code>subspec</code>:</p>
+
+<pre><code>subspec "data" do |sp|
+  	sp.source_files = "Classes/data"
+  	sp.requires_arc = false
+end
+
+subspec "UI" do |sp|
+  	sp.source_files = "Classes/UI"
+  	sp.requires_arc = true
+end
+</code></pre>
+
+<p>这样，集成的时候，就会对两部分代码进行分别配置。</p>
+
+<h2 id="section-3">静态库的处理</h2>
+
+<p>我们用到了静态库，在开发语音模块的过程中，使用了<code>libopencore-amrnb.a</code>的静态库，静态库如何集成进项目中呢？</p>
+
+<p><a href="http://guides.cocoapods.org/syntax/podspec.html#vendored_libraries">vendored_libraries</a>给了我们答案：</p>
+
+<p>spec.vendored_libraries = ‘libProj4.a’, ‘libJavaScriptCore.a’</p>
+
+<p>不过切记，这里写的路径，必须是git的路径，把路径写全了，只写一个.a文件名，可集成不进去。</p>
+
+<h2 id="section-4">为什么我老是集成失败？</h2>
+
+<p>我们在项目中使用了<code>yajl-json</code>，发现每次集成的时候都失败了。老是有文件没有集成进去，后来发现，cocoapods允许pod在install之后执行其他命令，而yajl执行了<code>cmake</code>命令，而我们没有安装<code>cmake</code>命令行工具，就导致了我们没有集成成功。</p>
+
+<h2 id="cocoapods-3">为什么使用cocoapods集成之后包变大了？</h2>
+
+<p>我想说其实这是一个伪命题，其实包没有大，只是Cocoapods帮你在项目里面多加了几个armv而已.至少我发现的是这样。</p>
+
+<h2 id="tag">为什么让我每次都重新生成tag？？</h2>
+
+<p>我们在开发的过程中，直接引用的是git地址+tag方式，结果迭代过程中，每次修改，项目组其他成员集成的之前，都必须重新生成一次tag。我承认我犯二了。。其实cocoapods给了解决方案，那就是直接指向git地址，最终发布release版本后，再生成tag，这样就可以了。</p>
+
+<h2 id="section-5">最后</h2>
+
+<p>终于碰到的技术问题都解决了，<code>pod install</code>之后，新组件X终于集成进了各个项目里面。</p>
+
+<p>感谢Cocoapods的团队，为我们提供了这么牛的工具!!</p>
+
+
+                <hr>
+<div class="ds-share" data-thread-key=/2014/07/20/cocoapods%E5%AE%9E%E8%B7%B5%E8%AE%B0/  data-title=cocoapods实践记  data-content="cocoapods实践记" data-url="http://qpai.github.io/2014/07/20/cocoapods%E5%AE%9E%E8%B7%B5%E8%AE%B0/" >
+    <div class="ds-share-inline">
+      <ul  class="ds-share-icons-16">
+        
+        <li data-toggle="ds-share-icons-more"><a class="ds-more" href="javascript:void(0);">分享到：</a></li>
+        <li><a class="ds-weibo" href="javascript:void(0);" data-service="weibo">微博</a></li>
+        <li><a class="ds-qzone" href="javascript:void(0);" data-service="qzone">QQ空间</a></li>
+        <li><a class="ds-qqt" href="javascript:void(0);" data-service="qqt">腾讯微博</a></li>
+        <li><a class="ds-wechat" href="javascript:void(0);" data-service="wechat">微信</a></li>
+        
+      </ul>
+      <div class="ds-share-icons-more">
+      </div>
+    </div>
+ </div>
+                <!-- 多说评论框 start -->
+  <div class="ds-thread" data-thread-key=/2014/07/20/cocoapods%E5%AE%9E%E8%B7%B5%E8%AE%B0/  data-title="cocoapods实践记" data-url= "http://qpai.github.io/2014/07/20/cocoapods%E5%AE%9E%E8%B7%B5%E8%AE%B0/"></div>
+<!-- 多说评论框 end -->
+<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+<script type="text/javascript">
+var duoshuoQuery = {short_name:"qpai"};
+  (function() {
+    var ds = document.createElement('script');
+    ds.type = 'text/javascript';ds.async = true;
+    ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+    ds.charset = 'UTF-8';
+    (document.getElementsByTagName('head')[0] 
+     || document.getElementsByTagName('body')[0]).appendChild(ds);
+  })();
+  </script>
+<!-- 多说公共JS代码 end -->
+
+                <ul class="pager">
+                    
+                    <li class="previous">
+                        <a href="/2014/06/11/%E7%94%A8runtime%E7%94%9F%E6%88%90%E4%B8%80%E4%B8%AA%E7%B1%BB/" data-toggle="tooltip" data-placement="top" title="用runtime生成一个类">&larr; Previous Post</a>
+                    </li>
+                    
+                    
+                    <li class="next">
+                        <a href="/2014/09/17/debugging_in_xcode_6/" data-toggle="tooltip" data-placement="top" title="Debugging in Xcode 6">Next Post &rarr;</a>
+                    </li>
+                    
+                </ul>
+
+            </div>
+        </div>
+    </div>
+</article>
+
+ 
+
+<hr>
+
+    <!-- Footer -->
+<footer>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <ul class="list-inline text-center">
+                    <li>
+                        <a href="/feed.xml" data-datatype="json" data-type="GET" data-target="#frame" class="reload" id="clickme">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-rss fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+                    
+                    
+                    
+                    <li>
+                        <a href="https://github.com/qingliangpai" target="_blank">
+                            <span class="fa-stack fa-lg">
+
+                              <i class="fa fa-arrow-circle-o-down"></i>
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-github fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+                    
+                      
+                </ul>
+                <p class="copyright text-muted">Copyright &copy; Qpai 2015 - 2016. <br> 2014, 2015 <br> 
+                </p>
+<div class="col-md-12">
+     <p class="copyright text-muted"> Running with
+      <!-- ICE AND FIRE THEME https://github.com/SpaceG/iceandfire -->
+    <a href="https://github.com/SpaceG/iceandfire">ICE & FIRE Theme by Lucas Gatsas.</a> Hosted on <a href="https://pages.github.com/"> Github</a></p>
+    </div>
+
+
+    
+            </div>
+        </div>
+    </div>
+
+   
+</footer>
+
+<!-- jQuery -->
+<script src="/js/jquery.min.js "></script>
+
+<script src="/js/spaceg.stylesheets.min.js"></script> 
+
+<script src="/js/bootstrap.min.js "></script>
+
+
+
+
+<script type="text/javascript">
+  //<![CDATA[
+    $(window).load(function() { // makes sure the whole site is loaded
+      $('#status').fadeOut(); // will first fade out the loading animation
+      $('#preloader').delay(150).fadeOut('fast'); // will fade out the white DIV that covers the website.
+      $('body').delay(100).css({'overflow':'visible'});
+    })
+  //]]>
+</script> 
+
+<script>
+  !function ($) {
+    $(function(){
+      window.prettyPrint && prettyPrint()
+    })
+  }(window.jQuery)
+</script>
+ 
+
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-53988504-1', 'auto');
+  ga('send', 'pageview');
+
+</script> 
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-63212709-1', 'auto');
+  ga('send', 'pageview');
+
+</script>
+
+
+
+    
+
+</body>
+
+</html>
